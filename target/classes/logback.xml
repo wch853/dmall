@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<configuration>
+
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<!-- encoder 默认配置为PatternLayoutEncoder -->
+		<encoder>
+			<pattern>%d{HH:mm:ss} [%-5level] %logger{48} %n-----> %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+
+	<logger level="debug" name="com.dmall">
+		<appender-ref ref="stdout" />
+	</logger>
+	
+</configuration>

@@ -1,0 +1,41 @@
+ul {
+	list-style: none;
+}
+
+#buyModal .input-group {
+	margin-left: 40px;
+}
+
+#buyModal li span, #numPrompt {
+	font-weight: bold;
+	color: #ff9900;
+}
+
+#buyModal li {
+	font-weight : bold;
+}
+
+#dmallImg {
+	width: 100%;
+}
+
+@media ( min-width :768px) {
+	#loginDiv {
+		top: 90px;
+	}
+}
+
+div.alert {
+	margin-top: 60px;
+	display: none;
+}
+
+.input-group {
+	width: 40%;
+}
+
+#numPrompt {
+	position: absolute;
+	width: 150px;
+	margin: 7px 0px 0px 20px;
+}
