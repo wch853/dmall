@@ -15,6 +15,8 @@
 <body>
 	<div class="container-fluid">
 		<div class="row-fluid">
+			
+			<!-- 左侧图片 -->
 			<div class="col-md-4 col-md-offset-2 col-xs-12">
 				<div class="page-header">
 					<h1 id="h1">
@@ -30,6 +32,8 @@
 					<br>
 				</div>
 			</div>
+			
+			<!-- 右侧登录入口 -->
 			<div class="col-md-3" id="loginDiv">
 				<form>
 					<div class="form-group">
@@ -49,12 +53,15 @@
 						</button>
 					</div>
 				</form>
-
+				
+				<!-- 登录失败弹出提示 -->
 				<div class="alert alert-warning">
 					<span>登录失败了(´･ω)~ 请检查您的用户名密码是否正确ʅ(‾◡◝)ʃ</span>
 				</div>
 			</div>
-		</div>
-	</div>
+			
+		</div>	<!-- row -->
+	
+	</div>	<!-- container -->
 </body>
 </html>

@@ -34,4 +34,12 @@ public class ProductServiceTest {
 		Product product = service.queryProuctById(productId);
 		log.info(product.toString());
 	}
+	
+	@Test
+	public void testQueryProductByName() {
+		String productName = "j";
+		List<Product> products = service.queryProductByName(productName);
+		
+		log.info(products.toString());
+	}
 }

@@ -10,7 +10,7 @@ public class OrderItem {
 	private Integer OrderItemId;
 	private Order order;
 	private Product product;
-	private int quanlity;
+	private int productQuanlity;
 
 	public Integer getOrderItemId() {
 		return OrderItemId;
@@ -36,18 +36,18 @@ public class OrderItem {
 		this.product = product;
 	}
 
-	public int getQuanlity() {
-		return quanlity;
+	public int getProductQuanlity() {
+		return productQuanlity;
 	}
 
-	public void setQuanlity(int quanlity) {
-		this.quanlity = quanlity;
+	public void setProductQuanlity(int productQuanlity) {
+		this.productQuanlity = productQuanlity;
 	}
 
 	@Override
 	public String toString() {
-		return "OrderItem [OrderItemId=" + OrderItemId + ", order=" + order + ", product=" + product + ", quanlity="
-				+ quanlity + "]";
+		return "OrderItem [OrderItemId=" + OrderItemId + ", order=" + order + ", product=" + product
+				+ ", productQuanlity=" + productQuanlity + "]";
 	}
 
 }

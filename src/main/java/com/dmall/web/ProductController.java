@@ -25,14 +25,21 @@ public class ProductController {
 	
 	@RequestMapping("/getProducts")
 	@ResponseBody
-	public Map<String, Object> getProducts(int offset, int limit) {
+	public Map<String, Object> getProducts(int offset, int limit, String search) {
 		Map<String, Object> map = new HashMap<>();
-		
-		int total = service.getTotal();
-		List<Product> allProducts = service.queryProduct(offset, limit);
-		
-		map.put("total", total);
-		map.put("rows", allProducts);
+
+		if (search.length() == 0) {
+			int total = service.getTotal();
+			List<Product> allProducts = service.queryProduct(offset, limit);
+			
+			map.put("total", total);
+			map.put("rows", allProducts);
+		} else {
+			List<Product> products = service.queryProductByName(search);
+			
+			map.put("total", products.size());
+			map.put("rows", products);
+		}
 		
 		return map;
 	}

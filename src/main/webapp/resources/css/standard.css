@@ -1,20 +1,23 @@
-ul {
-	list-style: none;
+/*all*/
+#page-wrapper {
+	margin-top: 50px;
 }
 
-#buyModal .input-group {
-	margin-left: 40px;
+/*nav*/
+nav li {
+	font-size: 16px;
 }
 
-#buyModal li span, #numPrompt {
-	font-weight: bold;
-	color: #ff9900;
+.navbar-right {
+	margin-right: 10px;
 }
 
-#buyModal li {
-	font-weight : bold;
-}
+/*glyphicon*/
+.glyphicon {
+	margin-right: 10px;
+} 
 
+/*index.jsp*/
 #dmallImg {
 	width: 100%;
 }
@@ -36,6 +39,35 @@ div.alert {
 
 #numPrompt {
 	position: absolute;
-	width: 150px;
+	width: 100%;
 	margin: 7px 0px 0px 20px;
+}
+
+/*listProduct.jsp*/
+ul {
+	list-style: none;
+}
+
+#buyModal .input-group {
+	margin-left: 40px;
+}
+
+#buyModal li span, #numPrompt {
+	font-weight: bold;
+	color: #ff9900;
+}
+
+#buyModal li {
+	font-weight: bold;
+}
+
+#searchImg {
+	width: 30%;
+}
+
+#search {
+	position: absolute;
+	top: 16px;
+	right: -200px;
+	width: 90%;
 }

@@ -21,4 +21,11 @@
 		FROM product 
 		WHERE product_id = #{productId}
 	</select>
+	
+	<select id="selectProductByName" resultType="Product">
+		SELECT product_id, product_name, product_price
+		FROM product
+		WHERE product_name 
+		LIKE '%' #{productName} '%'
+	</select>
 </mapper> 

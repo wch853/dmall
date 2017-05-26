@@ -11,4 +11,6 @@ public interface ProductService {
 	List<Product> queryProduct(int offset, int limit);
 	
 	Product queryProuctById(Integer productId);
+	
+	List<Product> queryProductByName(String productName);
 }

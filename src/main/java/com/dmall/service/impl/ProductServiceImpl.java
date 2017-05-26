@@ -34,5 +34,10 @@ public class ProductServiceImpl implements ProductService {
 	public Product queryProuctById(Integer productId) {
 		return dao.selectProductById(productId);
 	}
+
+	@Override
+	public List<Product> queryProductByName(String productName) {
+		return dao.selectProductByName(productName);
+	}
 	
 }

@@ -40,4 +40,13 @@ public class ProductDaoTest {
 		int count = dao.getCount();
 		log.info(count + "");
 	}
+	
+	@Test
+	public void testSelectProductByName() {
+		String productName = "j";
+		
+		List<Product> products = dao.selectProductByName(productName);
+		
+		log.info(products.toString());
+	}
 }
