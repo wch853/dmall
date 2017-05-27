@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <base href="${pageContext.request.contextPath }/">
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -24,7 +25,7 @@
 				<nav class="navbar navbar-fixed-top navbar-inverse "> 
 					<div class="navbar-header">
 						<a class="navbar-brand">DMALL 地猫商城</a>
-						<button class="navbar-toggle" data-toggle="collapse" data-target="collapseMenu">
+						<button class="navbar-toggle" data-toggle="collapse" data-target="#collapseMenu">
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
@@ -56,10 +57,10 @@
 			<div class="col-md-6 col-md-offset-3 col-xs-12">
 
 				<!-- 头部图片和搜索框 -->
-				<div>
+				<div id="topSearch">
 					<img alt="pic" id="searchImg" src="resources/img/dmall2.png">
 
-					<div id="search" class="pull-right">
+					<div id="search">
 						<span class="input-group"> 
 							<input type="text" id="searchText" class="form-control"> 
 							<span class="input-group-btn">
@@ -111,7 +112,8 @@
 									<li>商品总价：<span id="ptotal"></span></li>
 								</ul>
 								<button type="button" id="submit" class="btn btn-primary">
-									加入购物车</button>
+									加入购物车
+								</button>
 							</div>
 						</div>
 					</div>

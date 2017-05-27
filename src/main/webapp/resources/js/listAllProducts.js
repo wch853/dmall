@@ -77,9 +77,15 @@ $(function() {
 	/*加入购物车点击事件*/
 	$('#submit').click(function() {
 		if (regNumber()) {
+			// 禁用提交按钮，等待提交
+			$(this).prop('disabled', true);
+			
+			// TODO 提交业务逻辑
+			
 			$('#buyModal').modal('hide');
 			// 弹出提示加入成功窗口
 			$('#promptModal').modal('show');
+			$(this).prop('disabled', false);
 		}
 	})
 	

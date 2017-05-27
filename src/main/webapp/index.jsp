@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <base href="${pageContext.request.contextPath }/">
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -34,7 +35,7 @@
 			</div>
 			
 			<!-- 右侧登录入口 -->
-			<div class="col-md-3" id="loginDiv">
+			<div class="col-md-3 col-xs-12" id="loginDiv">
 				<form>
 					<div class="form-group">
 						<label for="username">帐号</label> 
