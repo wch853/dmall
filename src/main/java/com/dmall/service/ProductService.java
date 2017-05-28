@@ -1,16 +1,11 @@
 package com.dmall.service;
 
-import java.util.List;
-
-import com.dmall.beans.Product;
+import java.util.Map;
 
 public interface ProductService {
 	
 	int getTotal();
 	
-	List<Product> queryProduct(int offset, int limit);
+	Map<String, Object> queryProduct(int offset, int limit, String search);
 	
-	Product queryProuctById(Integer productId);
-	
-	List<Product> queryProductByName(String productName);
 }

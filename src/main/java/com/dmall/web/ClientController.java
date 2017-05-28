@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dmall.beans.Client;
-import com.dmall.enums.LoginEnum;
 import com.dmall.service.ClientService;
 
 /**

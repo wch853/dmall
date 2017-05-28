@@ -5,7 +5,31 @@
 	
 <mapper namespace="com.dmall.dao.OrderItemDao">
 	<insert id="insertOrderItem">
-		INSERT INTO order_item(product_id, )
-		VALUES()
+		INSERT INTO order_item(client_id, product_id, product_quantity)
+		VALUES(#{clientId}, #{productId}, #{productQuantity})
 	</insert>
+	
+	<select id="selectOrderItem" resultMap="orderItemMap">
+		SELECT order_item_id, product_id, product_quantity
+		FROM order_item
+		WHERE client_id = #{clientId} AND pack_state = #{packState}
+	</select>
+	
+	<resultMap type="OrderItem" id="orderItemMap">
+		<id column="order_item_id" property="orderItemId"/>
+		<result column="product_quantity" property="productQuantity"/>
+		<association property="product" javaType="Product" select="selectProductById" column="product_id"/>
+	</resultMap>
+	
+	<select id="selectProductById" resultType="Product">
+		SELECT product_id, product_name, product_price
+		FROM product 
+		WHERE product_id = #{product_id}
+	</select>
+	
+	<update id="updateOrderItemPrice">
+		UPDATE order_item
+		SET order_item_price = #{orderItemPrice}
+		WHERE order_item_id = #{orderItemId}
+	</update>
 </mapper>	

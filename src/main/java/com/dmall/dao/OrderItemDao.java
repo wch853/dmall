@@ -1,16 +1,23 @@
 package com.dmall.dao;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.dmall.beans.OrderItem;
-import com.dmall.beans.Product;
 
 public interface OrderItemDao {
-	
-	// 通过客户id查询属于该客户的所有未打包订单项
-	OrderItem selectOrderItemByClienId(Integer clientId);
-	
-	// 通过客户id和商品id查询未打包为订单的订单项
-	int selectUnpackedOrderItem(Integer clientId, Integer productId);
-	
+
 	// 插入订单项
-	int insertOrderItem(Product product, int productQuantity);
+	int insertOrderItem(@Param("clientId") Integer clientId,
+						@Param("productId") Integer productId, 
+						@Param("productQuantity") int productQuantity);
+
+	// 查询订单项 
+	List<OrderItem> selectOrderItem(@Param("clientId") Integer clientId,
+									@Param("packState") int packState);
+	
+	// 添加订单项价格
+	int updateOrderItemPrice(@Param("orderItemId") Integer orderItemId, 
+							 @Param("orderItemPrice") int orderItemPrice);
 }

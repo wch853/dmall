@@ -27,18 +27,18 @@ $(function() {
 		onClickRow : clickRow			// 单击表格行事件
 	});
 	
-	// 向后台传递涉及分页的两个参数
+	// 向后台传递的参数
 	function queryParams(params) {
 		return {
-			offset : params.offset,
-			limit : params.limit,
-			search : $('#searchText').val()
+			offset : params.offset,			// 分页偏移量
+			limit : params.limit,			// 每页数量	
+			search : $('#searchText').val()	// 搜索关键字
 		}
 	}
 
 	var price, pid;
 	/*单击表格行事件*/
-	function clickRow(row, $element) {
+	function clickRow(row, $element) {		// row参数表示该行
 		// 添加购物车弹窗
 		$('#buyModal').modal('show');		
 		$('#numText').val(1);
@@ -81,11 +81,20 @@ $(function() {
 			$(this).prop('disabled', true);
 			
 			// TODO 提交业务逻辑
+			$.ajax({
+				url : 'addOrderItem',
+				data : {
+					productId : pid,
+					productQuantity : $('#numText').val()
+				},
+				success : function(res) {
+					$('#buyModal').modal('hide');
+					// 弹出提示加入成功窗口
+					$('#promptModal').modal('show');
+					$(this).prop('disabled', false);
+				}
+			});
 			
-			$('#buyModal').modal('hide');
-			// 弹出提示加入成功窗口
-			$('#promptModal').modal('show');
-			$(this).prop('disabled', false);
 		}
 	})
 	

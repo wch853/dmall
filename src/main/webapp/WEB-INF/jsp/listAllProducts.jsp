@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link id="favicon" href="http://www.easyicon.net/api/resizeApi.php?id=1188709&size=128" rel="icon" type="image/x-icon"/>
 <base href="${pageContext.request.contextPath }/">
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -34,16 +35,24 @@
 
 					<div class="collapse navbar-collapse" id="collapseMenu">
 						<ul class="nav navbar-nav">
-							<li><a href="product">所有商品</a></li>
+							<li>
+								<a href="product">
+									<span class="glyphicon glyphicon-apple">所有商品</span>
+								</a>
+							</li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
+							<li>
+								<a href="cart">
+									<span class="glyphicon glyphicon-shopping-cart">购物车</span>
+								</a>
+							</li>
 							<li class="dropdown">
 								<a class="dropdown-toggle" data-toggle="dropdown">
 									${client.username }<strong class="caret"></strong>
 								</a>
 								<ul class="dropdown-menu">
 									<li><a><span class="glyphicon glyphicon-info-sign"></span>修改密码</a></li>
-									<li><a><span class="glyphicon glyphicon-th-list"></span>查看订单</a></li>
 									<li class="divider"></li>
 									<li><a><span class="glyphicon glyphicon-off"></span>退出登录</a></li>
 								</ul>
@@ -130,7 +139,7 @@
 								<span class="lead">该商品已成功加入购物车！</span>
 							</div>
 							<div class="modal-footer">
-								<a type="button" class="btn btn-primary">前往购物车</a>
+								<a href="cart" type="button" class="btn btn-primary">前往购物车</a>
 								<button type="button" class="btn btn-primary"
 									data-dismiss="modal">关闭</button>
 							</div>

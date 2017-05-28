@@ -24,15 +24,8 @@ public class ProductDaoTest {
 	
 	@Test
 	public void testSelectAllProducts() {
-		List<Product> allProducts = dao.selectProduct(0, 5);
+		List<Product> allProducts = dao.selectProduct(0, 5, "s");
 		log.info(allProducts.toString());
-	}
-	
-	@Test
-	public void testSelectProductById() {
-		Integer productId = 3;
-		Product product = dao.selectProductById(productId);
-		log.info(product.toString());
 	}
 	
 	@Test
@@ -41,12 +34,4 @@ public class ProductDaoTest {
 		log.info(count + "");
 	}
 	
-	@Test
-	public void testSelectProductByName() {
-		String productName = "j";
-		
-		List<Product> products = dao.selectProductByName(productName);
-		
-		log.info(products.toString());
-	}
 }
