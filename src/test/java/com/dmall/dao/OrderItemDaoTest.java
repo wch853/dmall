@@ -52,10 +52,10 @@ public class OrderItemDaoTest {
 	
 	@Test
 	public void testSelectSum() {
-		Integer clientId = 1;
+		Integer clientId = 2;
 		int packState = 1;
-		int sum = dao.selectSumOfUnPackedOrderItem(clientId, packState);
+		Object sum = dao.selectSumOfUnPackedOrderItem(clientId, packState);
 		
-		log.info(sum + "");
+		log.info((sum == null) + "");
 	}
 }

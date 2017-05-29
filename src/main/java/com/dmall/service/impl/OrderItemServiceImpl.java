@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.dmall.beans.OrderItem;
 import com.dmall.dao.OrderItemDao;
+import com.dmall.enums.PackStateEnum;
 import com.dmall.service.OrderItemService;
 
 @Service
@@ -22,7 +23,10 @@ public class OrderItemServiceImpl implements OrderItemService {
 	}
 
 	@Override
-	public List<OrderItem> queryOrderItem(Integer clientId, int packState) {
+	public List<OrderItem> queryOrderItem(Integer clientId) {
+		
+		// 查询的是未打包，即未生成为订单的订单项
+		int packState = PackStateEnum.UNPACKED.getState();
 		List<OrderItem> orderItems = dao.selectOrderItem(clientId, packState);
 		
 		// 将订单项中的以分为单位的价格转化为以元为单位并计算各订单项价格
@@ -45,7 +49,9 @@ public class OrderItemServiceImpl implements OrderItemService {
 	}
 
 	@Override
-	public double querySumOfUnPackedOrderItem(Integer clientId, int packState) {
+	public double querySumOfUnPackedOrderItem(Integer clientId) {
+		// 查询的是未打包，即未生成为订单的订单项
+		int packState = PackStateEnum.UNPACKED.getState();
 		int sum = dao.selectSumOfUnPackedOrderItem(clientId, packState);
 		double price = sum / 100.0;
 		return price;

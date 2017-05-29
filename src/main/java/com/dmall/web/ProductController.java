@@ -7,7 +7,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -91,19 +90,25 @@ public class ProductController {
 		}
 		
 		Integer clientId = client.getClientId();
-		// 查询的是未打包，即未生成为订单的订单项
-		int packState = PackStateEnum.UNPACKED.getState();
 
-		List<OrderItem> orderItems = orderItemService.queryOrderItem(clientId, packState);
-		double price = orderItemService.querySumOfUnPackedOrderItem(clientId, packState);
+		List<OrderItem> orderItems = orderItemService.queryOrderItem(clientId);
+		if (orderItems.size() > 0) {
+			double price = orderItemService.querySumOfUnPackedOrderItem(clientId);
+			mv.addObject("sumOfOrderItem", price);
+		}
 		
 		mv.addObject("orderItems", orderItems);
-		mv.addObject("sumOfOrderItem", price);
 		mv.setViewName("cart");
 
 		return mv;
 	}
 	
+	/**
+	 * 处理未登录时用到客户信息的空指针异常
+	 * 
+	 * @param ex
+	 * @return
+	 */
 	@ExceptionHandler(NoClientException.class)
 	public ModelAndView handleException(NoClientException ex) {
 		ModelAndView mv = new ModelAndView();

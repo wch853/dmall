@@ -28,7 +28,7 @@ nav li {
 	}
 }
 
-div.alert {
+#loginAlert {
 	margin-top: 60px;
 	display: none;
 }

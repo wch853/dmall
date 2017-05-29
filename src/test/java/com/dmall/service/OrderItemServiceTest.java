@@ -34,10 +34,11 @@ public class OrderItemServiceTest {
 	
 	@Test
 	public void testQueryOrderItem() {
-		Integer clientId = 1;
-		int packState = 1;
+		Integer clientId = 2;
 		
-		List<OrderItem> orderItems = service.queryOrderItem(clientId, packState);
+		List<OrderItem> orderItems = service.queryOrderItem(clientId);
+		
+		log.info(orderItems.size() + "");
 		
 		for (OrderItem orderItem : orderItems) {
 			log.info(orderItem.toString());
@@ -46,10 +47,9 @@ public class OrderItemServiceTest {
 	
 	@Test
 	public void testQuerySum() {
-		Integer clientId = 1;
-		int packState = 1;
+		Integer clientId = 2;
 		
-		double sum = service.querySumOfUnPackedOrderItem(clientId, packState);
+		double sum = service.querySumOfUnPackedOrderItem(clientId);
 		
 		log.info(sum + "");
 	}

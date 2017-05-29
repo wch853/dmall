@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -69,34 +70,45 @@
 						</div>
  					</div>
 					
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<th>订单编号</th>
-								<th>商品名称</th>
-								<th>商品单价</th>
-								<th>商品数量</th>
-								<th>金额小计</th>
-							</tr>
-						</thead>
-						
-						<tbody>
-							<c:forEach items="${orderItems }" var="orderItem" varStatus="st">
-								<tr>
-									<td>${orderItem.orderItemId }</td>
-									<td>${orderItem.product.productName }</td>
-									<td>${orderItem.product.doublePrice }</td>
-									<td>${orderItem.productQuantity }</td>
-									<td>${orderItem.doublePrice }
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
+					<c:choose>
+						<c:when test="${fn:length(orderItems) >0  }">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>订单编号</th>
+										<th>商品名称</th>
+										<th>商品单价</th>
+										<th>商品数量</th>
+										<th>金额小计</th>
+									</tr>
+								</thead>
+								
+								<tbody>
+									<c:forEach items="${orderItems }" var="orderItem" varStatus="st">
+										<tr>
+											<td>${orderItem.orderItemId }</td>
+											<td>${orderItem.product.productName }</td>
+											<td>${orderItem.product.doublePrice }</td>
+											<td>${orderItem.productQuantity }</td>
+											<td>${orderItem.doublePrice }
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+							
+							<div class="pull-right">
+								<span id="totalPrice">总金额：${sumOfOrderItem }</span>
+								<button class="btn btn-primary">确认付款</button>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div class="alert alert-warning">
+								<span>购物车为空ʅ(‾◡◝)ʃ快去选购商品吧~</span>
+								<a href="product">所有商品</a>
+							</div>
+						</c:otherwise>
+					</c:choose>
 					
-					<div class="pull-right">
-						<span id="totalPrice">总金额：${sumOfOrderItem }</span>
-						<button class="btn btn-primary">确认付款</button>
-					</div>
 				</div>
 			</div>
 			

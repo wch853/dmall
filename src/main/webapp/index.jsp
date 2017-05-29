@@ -57,7 +57,7 @@
 				</form>
 				
 				<!-- 登录失败弹出提示 -->
-				<div class="alert alert-warning">
+				<div id="loginAlert" class="alert alert-warning">
 					<span>登录失败了(´･ω)~ 请检查您的用户名密码是否正确ʅ(‾◡◝)ʃ</span>
 				</div>
 			</div>

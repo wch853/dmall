@@ -26,8 +26,6 @@ public class ClientController {
 	@ResponseBody
 	public Object checkLogin(HttpSession session, String username, String password) {
 
-		System.out.println(username + " " + password);
-
 		Client client = service.checkUser(username, password);
 
 		// client为空，即登录失败
