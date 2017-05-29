@@ -43,4 +43,14 @@ public class OrderItemServiceTest {
 			log.info(orderItem.toString());
 		}
 	}
+	
+	@Test
+	public void testQuerySum() {
+		Integer clientId = 1;
+		int packState = 1;
+		
+		double sum = service.querySumOfUnPackedOrderItem(clientId, packState);
+		
+		log.info(sum + "");
+	}
 }

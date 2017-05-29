@@ -48,7 +48,7 @@
 									${client.username }<strong class="caret"></strong>
 								</a>
 								<ul class="dropdown-menu">
-									<li><a><span class="glyphicon glyphicon-info-sign"></span>修改密码</a></li>
+									<li><a><span class="glyphicon glyphicon-info-sign"></span>我的订单</a></li>
 									<li class="divider"></li>
 									<li><a><span class="glyphicon glyphicon-off"></span>退出登录</a></li>
 								</ul>
@@ -65,7 +65,7 @@
 						<img alt="pic" id="searchImg" src="resources/img/dmall2.png">
 						
 						<div class="pull-right">
-							<h3>购物车</h3>
+							<h3>我的购物车</h3>
 						</div>
  					</div>
 					
@@ -94,7 +94,7 @@
 					</table>
 					
 					<div class="pull-right">
-						总金额：<span id="totalPrice"></span>
+						<span id="totalPrice">总金额：${sumOfOrderItem }</span>
 						<button class="btn btn-primary">确认付款</button>
 					</div>
 				</div>

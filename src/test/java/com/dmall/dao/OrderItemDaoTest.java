@@ -49,4 +49,13 @@ public class OrderItemDaoTest {
 		
 		dao.updateOrderItemPrice(orderItemId, orderItemPrice);
 	}
+	
+	@Test
+	public void testSelectSum() {
+		Integer clientId = 1;
+		int packState = 1;
+		int sum = dao.selectSumOfUnPackedOrderItem(clientId, packState);
+		
+		log.info(sum + "");
+	}
 }

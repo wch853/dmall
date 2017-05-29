@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -42,21 +43,36 @@
 							</li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
-							<li>
-								<a href="cart">
-									<span class="glyphicon glyphicon-shopping-cart">购物车</span>
-								</a>
-							</li>
-							<li class="dropdown">
-								<a class="dropdown-toggle" data-toggle="dropdown">
-									${client.username }<strong class="caret"></strong>
-								</a>
-								<ul class="dropdown-menu">
-									<li><a><span class="glyphicon glyphicon-info-sign"></span>修改密码</a></li>
-									<li class="divider"></li>
-									<li><a><span class="glyphicon glyphicon-off"></span>退出登录</a></li>
-								</ul>
-							</li>
+						
+							<c:choose>
+								<%--未登录时导航栏右侧显示的是登录提示 --%>
+								<c:when test="${empty client }">
+									<li>
+										<a href="index.jsp">
+											<span class="glyphicon glyphicon-user"> 登录</span>
+										</a>
+									</li>
+								</c:when>
+								<%-- 登录后显示的是用户菜单 --%>
+								<c:otherwise>
+									<li>
+										<a href="cart">
+											<span class="glyphicon glyphicon-shopping-cart">购物车</span>
+										</a>
+									</li>
+									<li class="dropdown">
+										<a class="dropdown-toggle" data-toggle="dropdown">
+											${client.username }<strong class="caret"></strong>
+										</a>
+										<ul class="dropdown-menu">
+											<li><a><span class="glyphicon glyphicon-info-sign"></span>我的订单</a></li>
+											<li class="divider"></li>
+											<li><a><span class="glyphicon glyphicon-off"></span>退出登录</a></li>
+										</ul>
+									</li>
+								</c:otherwise>
+							</c:choose>
+							
 						</ul>
 					</div>					
 				</nav>
@@ -89,7 +105,9 @@
 
 				<!-- 商品展示列表 -->
 				<div>
-					<table id="productTable"></table>
+					<table id="productTable">
+						<caption>点击商品加入购物车</caption>
+					</table>
 				</div>
 
 				<!-- 加入购物车弹窗 -->
@@ -136,7 +154,7 @@
 								<h4 class="modal-title">提示</h4>
 							</div>
 							<div class="modal-body">
-								<span class="lead">该商品已成功加入购物车！</span>
+								<span class="lead"></span>
 							</div>
 							<div class="modal-footer">
 								<a href="cart" type="button" class="btn btn-primary">前往购物车</a>

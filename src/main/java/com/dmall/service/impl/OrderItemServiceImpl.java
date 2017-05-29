@@ -44,5 +44,11 @@ public class OrderItemServiceImpl implements OrderItemService {
 		return orderItems;
 	}
 
-	
+	@Override
+	public double querySumOfUnPackedOrderItem(Integer clientId, int packState) {
+		int sum = dao.selectSumOfUnPackedOrderItem(clientId, packState);
+		double price = sum / 100.0;
+		return price;
+	}
+
 }

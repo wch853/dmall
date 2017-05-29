@@ -87,3 +87,14 @@ ul {
 		min-width: 75px;
 	}
 }
+
+/*cart.jsp*/
+#totalPrice {
+	font-weight: bold;
+	color: #ff9900;
+}
+
+/*error.jsp*/
+#errorPrompt {
+	margin-top: 200px;
+}

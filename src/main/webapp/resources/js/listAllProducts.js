@@ -53,9 +53,9 @@ $(function() {
 	/*验证数量输入条件*/
 	function regNumber() {
 		var num = $('#numText').val();
-		var reg = /^[0-9]{1,}$/;
+		var reg = /^[0-9]{1,2}$/;
 		if (!reg.test(num) || Number(num) == 0) {
-			$('#numPrompt').text('商品数量是正整数哟(ÒܫÓױ)~');
+			$('#numPrompt').text('数量请填1~99的整数哟(ÒܫÓױ)~');
 			return false;
 		} else {
 			$('#numPrompt').text('');
@@ -89,7 +89,13 @@ $(function() {
 				},
 				success : function(res) {
 					$('#buyModal').modal('hide');
-					// 弹出提示加入成功窗口
+					// 弹出提示返回响应窗口
+					var $addPrompt = $('#promptModal .lead');
+					if (res == true) {
+						$addPrompt.text('该商品已成功加入购物车')
+					} else {
+						$addPrompt.text('加入失败，请先登录哟[滑稽]~');
+					}
 					$('#promptModal').modal('show');
 					$(this).prop('disabled', false);
 				}

@@ -20,4 +20,8 @@ public interface OrderItemDao {
 	// 添加订单项价格
 	int updateOrderItemPrice(@Param("orderItemId") Integer orderItemId, 
 							 @Param("orderItemPrice") int orderItemPrice);
+	
+	// 查询对应客户购物车中的商品总额
+	int selectSumOfUnPackedOrderItem(@Param("clientId") Integer clientId,
+									 @Param("packState") int packState);
 }

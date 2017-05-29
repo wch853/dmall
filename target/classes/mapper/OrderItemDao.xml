@@ -32,4 +32,10 @@
 		SET order_item_price = #{orderItemPrice}
 		WHERE order_item_id = #{orderItemId}
 	</update>
+	
+	<select id="selectSumOfUnPackedOrderItem" resultType="int">
+		SELECT SUM(order_item_price)
+		FROM order_item
+		WHERE client_id = #{clientId} AND pack_state = #{packState}
+	</select>
 </mapper>	

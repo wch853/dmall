@@ -8,4 +8,6 @@ public interface OrderItemService {
 	int addOrderItem(Integer clientId, Integer productId, int productQuantity);
 	
 	List<OrderItem> queryOrderItem(Integer clientId, int packState);
+	
+	double querySumOfUnPackedOrderItem(Integer clientId, int packState);
 }
