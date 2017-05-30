@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.dmall.beans.Client;
 import com.dmall.beans.OrderItem;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -23,20 +24,20 @@ public class OrderItemServiceTest {
 
 	@Test
 	public void testAddOrderItem() {
-		Integer clientId = 1;
+		Client client = new Client(1);
 		Integer productId = 2;
 		int productQuantity = 12;
 
-		int res = service.addOrderItem(clientId, productId, productQuantity);
+		int res = service.addOrderItem(client, productId, productQuantity);
 
 		log.info(res + "");
 	}
 	
 	@Test
 	public void testQueryOrderItem() {
-		Integer clientId = 2;
+		Client client = new Client(2);
 		
-		List<OrderItem> orderItems = service.queryOrderItem(clientId);
+		List<OrderItem> orderItems = service.queryOrderItem(client);
 		
 		log.info(orderItems.size() + "");
 		
@@ -47,9 +48,9 @@ public class OrderItemServiceTest {
 	
 	@Test
 	public void testQuerySum() {
-		Integer clientId = 2;
+		Client client = new Client(4);
 		
-		double sum = service.querySumOfUnPackedOrderItem(clientId);
+		double sum = service.querySumOfUnPackedOrderItem(client);
 		
 		log.info(sum + "");
 	}

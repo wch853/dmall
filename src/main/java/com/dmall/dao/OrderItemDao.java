@@ -9,19 +9,20 @@ import com.dmall.beans.OrderItem;
 public interface OrderItemDao {
 
 	// 插入订单项
-	int insertOrderItem(@Param("clientId") Integer clientId,
-						@Param("productId") Integer productId, 
-						@Param("productQuantity") int productQuantity);
+	int insertOrderItem(OrderItem orderItem);
 
 	// 查询订单项 
-	List<OrderItem> selectOrderItem(@Param("clientId") Integer clientId,
-									@Param("packState") int packState);
+	List<OrderItem> selectOrderItem(OrderItem orderItem);
 	
 	// 添加订单项价格
-	int updateOrderItemPrice(@Param("orderItemId") Integer orderItemId, 
-							 @Param("orderItemPrice") int orderItemPrice);
+	int updateOrderItemPrice(OrderItem orderItem);
 	
 	// 查询对应客户购物车中的商品总额
-	int selectSumOfUnPackedOrderItem(@Param("clientId") Integer clientId,
-									 @Param("packState") int packState);
+	int selectSumOfUnPackedOrderItem(OrderItem orderItem);
+	
+	// 结算时将订单id插入订单项中
+	int updateOrderId(@Param("clientId") Integer clientId, 
+					  @Param("orderId") Integer orderId,
+					  @Param("packState") int packState,
+					  @Param("changeState") int changeState);
 }

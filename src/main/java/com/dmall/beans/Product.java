@@ -15,6 +15,14 @@ public class Product {
 	// 以元为单位
 	private double doublePrice;
 
+	public Product() {
+		super();
+	}
+
+	public Product(Integer productId) {
+		this.productId = productId;
+	}
+
 	public double getDoublePrice() {
 		return doublePrice;
 	}

@@ -6,13 +6,13 @@
 <mapper namespace="com.dmall.dao.OrderItemDao">
 	<insert id="insertOrderItem">
 		INSERT INTO order_item(client_id, product_id, product_quantity)
-		VALUES(#{clientId}, #{productId}, #{productQuantity})
+		VALUES(#{client.clientId}, #{product.productId}, #{productQuantity})
 	</insert>
 	
 	<select id="selectOrderItem" resultMap="orderItemMap">
 		SELECT order_item_id, product_id, product_quantity
 		FROM order_item
-		WHERE client_id = #{clientId} AND pack_state = #{packState}
+		WHERE client_id = #{client.clientId} AND pack_state = #{packState}
 	</select>
 	
 	<resultMap type="OrderItem" id="orderItemMap">
@@ -36,6 +36,12 @@
 	<select id="selectSumOfUnPackedOrderItem" resultType="int">
 		SELECT SUM(order_item_price)
 		FROM order_item
-		WHERE client_id = #{clientId} AND pack_state = #{packState}
+		WHERE client_id = #{client.clientId} AND pack_state = #{packState}
 	</select>
+	
+	<update id="updateOrderId">
+		UPDATE order_item
+		SET order_id = #{orderId}, pack_state = #{changeState}
+		WHERE client_id = #{clientId} AND pack_state = #{packState}
+	</update>
 </mapper>	

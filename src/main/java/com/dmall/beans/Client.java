@@ -11,6 +11,14 @@ public class Client {
 	private String username;
 	private String password;
 
+	public Client() {
+		super();
+	}
+
+	public Client(Integer clientId) {
+		this.clientId = clientId;
+	}
+
 	public Integer getClientId() {
 		return clientId;
 	}

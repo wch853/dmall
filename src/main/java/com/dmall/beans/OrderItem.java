@@ -19,6 +19,26 @@ public class OrderItem {
 	// 订单项价格，以元为单位
 	private double doublePrice;
 
+	public OrderItem() {
+		super();
+	}
+
+	public OrderItem(Client client, Product product, int productQuantity) {
+		this.client = client;
+		this.product = product;
+		this.productQuantity = productQuantity;
+	}
+
+	public OrderItem(Client client, int packState) {
+		this.client = client;
+		this.packState = packState;
+	}
+
+	public OrderItem(Integer orderItemId, int orderItemPrice) {
+		this.orderItemId = orderItemId;
+		this.orderItemPrice = orderItemPrice;
+	}
+
 	public Integer getOrderItemId() {
 		return orderItemId;
 	}

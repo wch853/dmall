@@ -14,9 +14,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.dmall.beans.Client;
 import com.dmall.beans.OrderItem;
-import com.dmall.enums.PackStateEnum;
 import com.dmall.exception.NoClientException;
 import com.dmall.service.OrderItemService;
+import com.dmall.service.OrderService;
 import com.dmall.service.ProductService;
 
 /**
@@ -32,6 +32,9 @@ public class ProductController {
 
 	@Autowired
 	private OrderItemService orderItemService;
+	
+	@Autowired 
+	private OrderService orderService;
 
 	@RequestMapping("/product")
 	public String product() {
@@ -68,9 +71,7 @@ public class ProductController {
 			return false;
 		}
 		
-		Integer clientId = client.getClientId();
-
-		orderItemService.addOrderItem(clientId, productId, productQuantity);
+		orderItemService.addOrderItem(client, productId, productQuantity);
 		// $.ajax，不返回参数就无法使用success回调，待查
 		return true;
 	}
@@ -89,15 +90,11 @@ public class ProductController {
 			throw new NoClientException("用户未登录[滑稽]~");
 		}
 		
-		Integer clientId = client.getClientId();
-
-		List<OrderItem> orderItems = orderItemService.queryOrderItem(clientId);
-		if (orderItems.size() > 0) {
-			double price = orderItemService.querySumOfUnPackedOrderItem(clientId);
-			mv.addObject("sumOfOrderItem", price);
-		}
+		List<OrderItem> orderItems = orderItemService.queryOrderItem(client);
+		double price = orderItemService.querySumOfUnPackedOrderItem(client);
 		
 		mv.addObject("orderItems", orderItems);
+		mv.addObject("sumOfOrderItem", price);
 		mv.setViewName("cart");
 
 		return mv;
@@ -115,5 +112,13 @@ public class ProductController {
 		mv.addObject("ex", ex);
 		mv.setViewName("forward:ErrorPage/error.jsp");
 		return mv;
+	}
+	
+	@RequestMapping("/payOrder")
+	@ResponseBody
+	public String payOrder(HttpSession session) {
+		Client client = (Client) session.getAttribute("client");
+		orderService.packOrder(client);
+		return "支付成功(^∇^*)去首页发现更多~";
 	}
 }

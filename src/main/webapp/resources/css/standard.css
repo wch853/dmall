@@ -15,7 +15,7 @@ nav li {
 /*glyphicon*/
 .glyphicon {
 	margin-right: 10px;
-} 
+}
 
 /*index.jsp*/
 #dmallImg {
@@ -72,17 +72,14 @@ ul {
 	width: 90%;
 }
 
-
 @media ( max-width :768px) {
 	#topSearch {
 		margin-top: 15px;
 		margin-bottom: 15px;
 	}
-	
 	#search {
 		right: -125px;
 	}
-	
 	#searchText {
 		min-width: 75px;
 	}
@@ -94,6 +91,9 @@ ul {
 	color: #ff9900;
 }
 
+#nullCartTip {
+	margin-top: 30px;
+}
 /*error.jsp*/
 #errorPrompt {
 	margin-top: 200px;

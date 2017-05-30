@@ -165,7 +165,7 @@
 					</div>
 				</div>
 
-			</div>	<!-- row -->
+			</div>
 			</div>	<!-- page-wrapper -->
 		</div>	<!-- container -->
 	</div>	<!-- wrapper -->

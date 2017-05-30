@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.dmall.beans.Client;
 import com.dmall.beans.OrderItem;
+import com.dmall.beans.Product;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:spring/spring-dao.xml")
@@ -23,39 +25,55 @@ public class OrderItemDaoTest {
 	
 	@Test
 	public void testInsertOrderItem() {
-		Integer clientId = 1;
-		Integer productId = 1;
+		Client client = new Client(1);
+		Product product = new Product(11);
 		int productQuantity = 14;
 		
-		int insertOrderItem = dao.insertOrderItem(clientId, productId, productQuantity);
+		OrderItem orderItem = new OrderItem(client, product, productQuantity);
+		
+		int insertOrderItem = dao.insertOrderItem(orderItem);
 		
 		log.info(insertOrderItem + "");
 	}
 	
 	@Test
 	public void testSelectOrderItem() {
-		Integer clientId = 1;
+		Client client = new Client(2);
 		int packState = 1;
 		
-		List<OrderItem> orderItems = dao.selectOrderItem(clientId, packState);
+		OrderItem orderItem = new OrderItem(client, packState);
+		
+		List<OrderItem> orderItems = dao.selectOrderItem(orderItem);
 		
 		log.info(orderItems.toString());
 	}
 	
 	@Test
 	public void testUpdateOrderItemPrice() {
-		Integer orderItemId = 14;
+		Integer orderItemId = 15;
 		int orderItemPrice = 1234;
+		OrderItem orderItem = new OrderItem(orderItemId, orderItemPrice);
 		
-		dao.updateOrderItemPrice(orderItemId, orderItemPrice);
+		dao.updateOrderItemPrice(orderItem);
 	}
 	
 	@Test
 	public void testSelectSum() {
-		Integer clientId = 2;
+		Client client = new Client(1);
 		int packState = 1;
-		Object sum = dao.selectSumOfUnPackedOrderItem(clientId, packState);
 		
-		log.info((sum == null) + "");
+		OrderItem orderItem = new OrderItem(client, packState);
+		int sum = dao.selectSumOfUnPackedOrderItem(orderItem);
+		
+		log.info(sum + "");
+	}
+	
+	@Test
+	public void testUpdateOrderId() {
+		Integer clientId = 1;
+		Integer orderId = 233;
+		int packState = 1;
+		int changeState = 2;
+		dao.updateOrderId(clientId, orderId, packState, changeState);
 	}
 }

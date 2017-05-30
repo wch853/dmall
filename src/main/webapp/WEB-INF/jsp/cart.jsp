@@ -12,6 +12,7 @@
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="resources/js/cart.js"></script>
 <link href="resources/css/standard.css" rel="stylesheet">
 <title>购物车</title>
 </head>
@@ -98,17 +99,30 @@
 							
 							<div class="pull-right">
 								<span id="totalPrice">总金额：${sumOfOrderItem }</span>
-								<button class="btn btn-primary">确认付款</button>
+								<button class="btn btn-primary" id="confirmPayBtn">确认付款</button>
 							</div>
 						</c:when>
 						<c:otherwise>
-							<div class="alert alert-warning">
+							<div id="nullCartTip" class="alert alert-warning">
 								<span>购物车为空ʅ(‾◡◝)ʃ快去选购商品吧~</span>
 								<a href="product">所有商品</a>
 							</div>
 						</c:otherwise>
 					</c:choose>
 					
+					<div id="payTipModal" class="modal fade">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h4 class="modal-title">提示</h4>
+								</div>
+								<div class="modal-body"><span class="lead"></span></div>
+								<div class="modal-footer">
+									<button href="product" id="payBtn" type="button" class="btn btn-primary">确定</button>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 			

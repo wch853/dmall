@@ -10,9 +10,23 @@ import java.util.Date;
  */
 public class Order {
 	private Integer orderId;
-	private Integer clientId;
+	private Client client;
 	private int orderPrice;
 	private Date createDate;
+
+	public Order() {
+		super();
+	}
+
+	public Order(Integer orderId) {
+		this.orderId = orderId;
+	}
+
+	public Order(Client client, int orderPrice) {
+		super();
+		this.client = client;
+		this.orderPrice = orderPrice;
+	}
 
 	public Integer getOrderId() {
 		return orderId;
@@ -22,12 +36,12 @@ public class Order {
 		this.orderId = orderId;
 	}
 
-	public Integer getClientId() {
-		return clientId;
+	public Client getClient() {
+		return client;
 	}
 
-	public void setClientId(Integer clientId) {
-		this.clientId = clientId;
+	public void setClient(Client client) {
+		this.client = client;
 	}
 
 	public int getOrderPrice() {
@@ -48,7 +62,7 @@ public class Order {
 
 	@Override
 	public String toString() {
-		return "Order [orderId=" + orderId + ", clientId=" + clientId + ", orderPrice=" + orderPrice + ", createDate="
+		return "Order [orderId=" + orderId + ", client=" + client + ", orderPrice=" + orderPrice + ", createDate="
 				+ createDate + "]";
 	}
 
