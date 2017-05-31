@@ -36,4 +36,10 @@ public class ClientController {
 			return true;
 		}
 	}
+	
+	@RequestMapping("/offline")
+	public String clientOffline(HttpSession session) {
+		session.removeAttribute("client");
+		return "redirect:index.jsp";
+	}
 }

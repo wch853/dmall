@@ -65,9 +65,7 @@
 											${client.username }<strong class="caret"></strong>
 										</a>
 										<ul class="dropdown-menu">
-											<li><a><span class="glyphicon glyphicon-info-sign"></span>我的订单</a></li>
-											<li class="divider"></li>
-											<li><a><span class="glyphicon glyphicon-off"></span>退出登录</a></li>
+											<li><a href="offline"><span class="glyphicon glyphicon-off"></span>退出登录</a></li>
 										</ul>
 									</li>
 								</c:otherwise>

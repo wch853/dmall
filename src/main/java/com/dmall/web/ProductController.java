@@ -114,11 +114,18 @@ public class ProductController {
 		return mv;
 	}
 	
-	@RequestMapping("/payOrder")
+	@RequestMapping(value = "/payOrder", produces = "text/html; charset=UTF-8")
 	@ResponseBody
 	public String payOrder(HttpSession session) {
 		Client client = (Client) session.getAttribute("client");
-		orderService.packOrder(client);
-		return "支付成功(^∇^*)去首页发现更多~";
+		
+		String tip = "支付失败，请稍候重试！";
+		
+		int res = orderService.packOrder(client);
+		if (res > 0) {
+			tip = "支付成功(^∇^*)去首页发现更多~";
+		}
+		
+		return tip;
 	}
 }

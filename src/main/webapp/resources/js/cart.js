@@ -1,17 +1,19 @@
 $(function() {
-	var $tip = $('#payTipModal .lead');
+	var $confirmModal = $('#payTipModal');
 	
 	$('#confirmPayBtn').click(function() {
-		$('#payTipModal').modal('show');
-		$tip.text('请确认支付！');
+		$confirmModal.modal('show');
 	});
+	
 	
 	$('#payBtn').click(function() {
 		$.ajax({
 			url : 'payOrder',
 			success : function(res) {
-				$tip.text(res);
-				$('#payBtn').attr('id', 'goProduct');
+				$confirmModal.modal('hide');
+				$('#goModal .lead').text(res);
+				// 设置点击不可关闭，ESC不可关闭
+				$('#goModal').modal({backdrop: 'static', keyboard: false});
 			}
 		});
 	});

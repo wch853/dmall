@@ -41,7 +41,7 @@
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 							<li>
-								<a>
+								<a href="cart">
 									<span class="glyphicon glyphicon-shopping-cart">购物车</span>
 								</a>
 							</li>
@@ -50,9 +50,7 @@
 									${client.username }<strong class="caret"></strong>
 								</a>
 								<ul class="dropdown-menu">
-									<li><a><span class="glyphicon glyphicon-info-sign"></span>我的订单</a></li>
-									<li class="divider"></li>
-									<li><a><span class="glyphicon glyphicon-off"></span>退出登录</a></li>
+									<li><a href="offline"><span class="glyphicon glyphicon-off"></span>退出登录</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -116,9 +114,23 @@
 								<div class="modal-header">
 									<h4 class="modal-title">提示</h4>
 								</div>
-								<div class="modal-body"><span class="lead"></span></div>
+								<div class="modal-body"><span class="lead">请确认支付！</span></div>
 								<div class="modal-footer">
 									<button href="product" id="payBtn" type="button" class="btn btn-primary">确定</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div id="goModal" class="modal fade">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h4 class="modal-title">提示</h4>
+								</div>
+								<div class="modal-body"><span class="lead"></span></div>
+								<div class="modal-footer">
+									<button href="product" id="goProduct" type="button" class="btn btn-primary">确定</button>
 								</div>
 							</div>
 						</div>
