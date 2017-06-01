@@ -20,7 +20,7 @@ public interface OrderItemDao {
 	// 查询对应客户购物车中的商品总额
 	int selectSumOfUnPackedOrderItem(OrderItem orderItem);
 	
-	// 结算时将订单id插入订单项中
+	// 结算时将订单id插入订单项中，同时将打包状态更新为已打包
 	int updateOrderId(@Param("clientId") Integer clientId, 
 					  @Param("orderId") Integer orderId,
 					  @Param("packState") int packState,

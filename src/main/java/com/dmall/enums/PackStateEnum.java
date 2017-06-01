@@ -12,7 +12,7 @@ public enum PackStateEnum {
 
 	private int state;
 	private String info;
-	
+
 	public int getState() {
 		return state;
 	}
@@ -25,10 +25,16 @@ public enum PackStateEnum {
 		this.state = state;
 		this.info = info;
 	}
-	
-	public PackStateEnum getPackState(int index) {
+
+	/**
+	 * 根据数据参数查询具体信息
+	 * 
+	 * @param state
+	 * @return
+	 */
+	public PackStateEnum getPackState(int state) {
 		for (PackStateEnum packStateEnum : values()) {
-			if (packStateEnum.getState() == index) {
+			if (packStateEnum.getState() == state) {
 				return packStateEnum;
 			}
 		}

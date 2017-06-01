@@ -21,7 +21,7 @@ public class ClientDaoTest {
 	
 	@Test
 	public void testCheckUser() {
-		String username = "wch853";
+		String username = "wch85";
 		String password = "123456";
 		
 		Client client = dao.checkUser(username, password);

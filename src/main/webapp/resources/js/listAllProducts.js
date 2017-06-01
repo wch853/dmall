@@ -80,7 +80,7 @@ $(function() {
 			// 禁用提交按钮，等待提交
 			$(this).prop('disabled', true);
 			
-			// TODO 提交业务逻辑
+			// 提交业务逻辑
 			$.ajax({
 				url : 'addOrderItem',
 				data : {
@@ -95,9 +95,11 @@ $(function() {
 						$addPrompt.text('该商品已成功加入购物车')
 					} else {
 						$addPrompt.text('加入失败，请先登录哟[滑稽]~');
+						// 将“加入购物车”按钮改为登录，并链接到登录页面
+						$('.modal-footer a.btn').text('登录').attr('href', '');
 					}
 					$('#promptModal').modal('show');
-					$(this).prop('disabled', false);
+					$('#submit').prop('disabled', false);
 				}
 			});
 			

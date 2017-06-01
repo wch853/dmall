@@ -24,6 +24,9 @@ public class OrderItemServiceImpl implements OrderItemService {
 	@Autowired
 	private OrderItemDao dao;
 	
+	/**
+	 * 增加订单项（加入购物车）
+	 */
 	@Override
 	public int addOrderItem(Client client, Integer productId, int productQuantity) {
 		Product product = new Product(productId);
@@ -31,6 +34,9 @@ public class OrderItemServiceImpl implements OrderItemService {
 		return dao.insertOrderItem(orderItem);
 	}
 
+	/**
+	 * 查询订单项（购物车页展示）
+	 */
 	@Override
 	public List<OrderItem> queryOrderItem(Client client) {
 		
@@ -38,6 +44,10 @@ public class OrderItemServiceImpl implements OrderItemService {
 		int packState = PackStateEnum.UNPACKED.getState();
 		OrderItem orderItem = new OrderItem(client, packState);
 		List<OrderItem> orderItems = dao.selectOrderItem(orderItem);
+		
+		if (orderItems.size() == 0) {
+			return null;
+		}
 		
 		// 将订单项中的以分为单位的价格转化为以元为单位并计算各订单项价格
 		Iterator<OrderItem> it = orderItems.iterator();
@@ -61,6 +71,9 @@ public class OrderItemServiceImpl implements OrderItemService {
 		return orderItems;
 	}
 
+	/**
+	 * 查询购物车中所有商品总额
+	 */
 	@Override
 	public double querySumOfUnPackedOrderItem(Client client) {
 		// 查询的是未打包，即未生成为订单的订单项

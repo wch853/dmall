@@ -1,5 +1,6 @@
 package com.dmall.service.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -36,7 +37,7 @@ public class ProductServiceImpl implements ProductService {
 	public Map<String, Object> queryProduct(int offset, int limit, String search) {
 		Map<String, Object> map = new HashMap<>();
 
-		List<Product> products;
+		List<Product> products = new ArrayList<Product>();
 		int total = 0;
 		
 		if(search.length() == 0) {
@@ -52,6 +53,7 @@ public class ProductServiceImpl implements ProductService {
 		while (it.hasNext()) {
 			Product product = it.next();
 			int price = product.getProductPrice();
+			// 展示的是以分为单位的商品价格
 			product.setDoublePrice(price / 100.0);
 		}
 		

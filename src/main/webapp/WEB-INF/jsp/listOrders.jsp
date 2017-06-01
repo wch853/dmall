@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,9 +12,8 @@
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="resources/js/cart.js"></script>
 <link href="resources/css/standard.css" rel="stylesheet">
-<title>购物车</title>
+<title>历史订单</title>
 </head>
 <body>
 	<div id="wrapper">
@@ -60,87 +60,57 @@
 			</div>
 			
 			<div id="page-wrapper">
+			
 				<div class="col-md-6 col-md-offset-3 col-xs-12">
 					
 					<div>
 						<img alt="pic" id="searchImg" src="resources/img/dmall2.png">
 						
 						<div class="pull-right">
-							<h4>我的购物车</h4>
+							<h4>我的订单记录</h4>
 						</div>
  					</div>
 					
 					<c:choose>
-						<c:when test="${empty orderItems }">
+						<c:when test="${empty orders }">
 							<div id="nullCartTip" class="alert alert-warning">
-								<span>购物车为空ʅ(‾◡◝)ʃ快去选购商品吧~</span>
+								<span>历史订单为空ʅ(‾◡◝)ʃ快去选购商品吧~</span>
 								<a href="product">所有商品</a>
 							</div>
 						</c:when>
 						<c:otherwise>
-							<table class="table table-striped">
-								<thead>
-									<tr>
-										<th>订单项编号</th>
-										<th>商品名称</th>
-										<th>商品单价</th>
-										<th>商品数量</th>
-										<th>金额小计</th>
-									</tr>
-								</thead>
-								
-								<tbody>
-									<c:forEach items="${orderItems }" var="orderItem" varStatus="st">
+							<c:forEach items="${orders }" var="order" varStatus="st">
+								<table class="table table-striped table-bordered">
+									<caption>
+										订单编号：<span>${order.orderId }</span>
+										下单时间：<span><fmt:formatDate value="${order.createDate }" pattern="yyyy-MM-dd HH:mm:ss"/></span>
+										订单总价：<span>${order.doublePrice }<span>
+									</caption>
+									<thead>
 										<tr>
-											<td>${orderItem.orderItemId }</td>
-											<td>${orderItem.product.productName }</td>
-											<td>${orderItem.product.doublePrice }</td>
-											<td>${orderItem.productQuantity }</td>
-											<td>${orderItem.doublePrice }
+											<th>订单项编号</th>
+											<th>商品名称</th>
+											<th>商品数量</th>
 										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
-							
-							<div class="pull-right">
-								<span id="totalPrice">总金额：${sumOfOrderItem }</span>
-								<button class="btn btn-primary" id="confirmPayBtn">确认付款</button>
-							</div>
+									</thead>
+									<tbody>
+										<c:forEach items="${order.orderItems }" var="orderItem">
+											<tr>
+												<td>${orderItem.orderItemId }</td>
+												<td>${orderItem.product.productName }</td>
+												<td>${orderItem.productQuantity }</td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+							</c:forEach>
 						</c:otherwise>
 					</c:choose>
-					
-					<div id="payTipModal" class="modal fade">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h4 class="modal-title">提示</h4>
-								</div>
-								<div class="modal-body"><span class="lead">请确认支付！</span></div>
-								<div class="modal-footer">
-									<button id="payBtn" type="button" class="btn btn-primary">确定</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<div id="goModal" class="modal fade">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h4 class="modal-title">提示</h4>
-								</div>
-								<div class="modal-body"><span class="lead"></span></div>
-								<div class="modal-footer">
-									<button id="goProduct" type="button" class="btn btn-primary">确定</button>
-								</div>
-							</div>
-						</div>
-					</div>
 				</div>
-				
 			</div>	<!-- page-wrapper -->
 			
 		</div>	<!-- container -->
 	</div>	<!-- wrapper -->
+			
 </body>
 </html>

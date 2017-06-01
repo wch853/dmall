@@ -1,9 +1,10 @@
 package com.dmall.beans;
 
 import java.util.Date;
+import java.util.List;
 
 /**
- * 订单项实体类
+ * 订单实体类
  * 
  * @author wch
  *
@@ -13,6 +14,8 @@ public class Order {
 	private Client client;
 	private int orderPrice;
 	private Date createDate;
+	private List<OrderItem> orderItems;
+	private double doublePrice;
 
 	public Order() {
 		super();
@@ -23,7 +26,6 @@ public class Order {
 	}
 
 	public Order(Client client, int orderPrice) {
-		super();
 		this.client = client;
 		this.orderPrice = orderPrice;
 	}
@@ -60,10 +62,26 @@ public class Order {
 		this.createDate = createDate;
 	}
 
+	public List<OrderItem> getOrderItems() {
+		return orderItems;
+	}
+
+	public void setOrderItems(List<OrderItem> orderItems) {
+		this.orderItems = orderItems;
+	}
+	
+	public double getDoublePrice() {
+		return doublePrice;
+	}
+
+	public void setDoublePrice(double doublePrice) {
+		this.doublePrice = doublePrice;
+	}
+
 	@Override
 	public String toString() {
 		return "Order [orderId=" + orderId + ", client=" + client + ", orderPrice=" + orderPrice + ", createDate="
-				+ createDate + "]";
+				+ createDate + ", orderItems=" + orderItems + "]";
 	}
 
 }

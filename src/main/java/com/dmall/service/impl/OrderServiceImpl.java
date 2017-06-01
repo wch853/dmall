@@ -1,5 +1,8 @@
 package com.dmall.service.impl;
 
+import java.util.Iterator;
+import java.util.List;
+
 import org.apache.ibatis.binding.BindingException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,6 +51,35 @@ public class OrderServiceImpl implements OrderService {
 		}
 		
 		return 0;
+	}
+
+	/**
+	 * 查询所有订单（历史订单）
+	 */
+	@Override
+	public List<Order> queryOrders(Client client) {
+		List<Order> orders = orderDao.selectOrderByClient(client);
+		
+		if (orders.size() == 0) {
+			return null;
+		}
+		
+		// 查询的是已打包的订单项
+		int packState = PackStateEnum.PACKED.getState();
+		
+		Iterator<Order> it = orders.iterator();
+		while (it.hasNext()) {
+			Order order = it.next();
+			// 展示的是以分为单位的价格
+			order.setDoublePrice(order.getOrderPrice() / 100.0);
+			
+			// 为相应订单加载订单项
+			OrderItem orderItem = new OrderItem(order, client, packState);
+			List<OrderItem> orderItems = orderItemDao.selectOrderItem(orderItem);
+			order.setOrderItems(orderItems);
+		}
+		
+		return orders;
 	}
 
 }

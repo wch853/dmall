@@ -12,7 +12,7 @@ $(function() {
 			success : function(res) {
 				$confirmModal.modal('hide');
 				$('#goModal .lead').text(res);
-				// 设置点击不可关闭，ESC不可关闭
+				// 设置点击不可关闭，键盘不可关闭
 				$('#goModal').modal({backdrop: 'static', keyboard: false});
 			}
 		});

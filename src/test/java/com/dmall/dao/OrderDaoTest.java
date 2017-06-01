@@ -1,5 +1,7 @@
 package com.dmall.dao;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -30,4 +32,9 @@ public class OrderDaoTest {
 		log.info("orderId=" + order.getOrderId());
 	}
 	
+	@Test
+	public void testSelectOrder() {
+		List<Order> orders = orderDao.selectOrderByClient(new Client(1));
+		log.info(orders.toString());
+	}
 }

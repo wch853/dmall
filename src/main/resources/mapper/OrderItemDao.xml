@@ -13,6 +13,9 @@
 		SELECT order_item_id, product_id, product_quantity
 		FROM order_item
 		WHERE client_id = #{client.clientId} AND pack_state = #{packState}
+		<if test="null != order">
+			AND order_id = #{order.orderId}
+		</if>
 	</select>
 	
 	<resultMap type="OrderItem" id="orderItemMap">

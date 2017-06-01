@@ -8,4 +8,13 @@
 		INSERT INTO order_(client_id, order_price)
 		VALUES(#{client.clientId}, #{orderPrice})
 	</insert>
+	
+	<select id="selectOrderByClient" resultType="Order">
+		SELECT order_id, order_price, create_date
+		FROM order_
+		WHERE client_id = #{clientId}
+		ORDER BY order_id DESC
+		LIMIT 0, 5
+	</select>
+	
 </mapper>

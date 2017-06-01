@@ -22,6 +22,13 @@ public class ClientController {
 	@Autowired
 	private ClientService service;
 
+	/**
+	 * 用户登录
+	 * @param session
+	 * @param username
+	 * @param password
+	 * @return
+	 */
 	@RequestMapping("/login")
 	@ResponseBody
 	public Object checkLogin(HttpSession session, String username, String password) {
@@ -37,9 +44,14 @@ public class ClientController {
 		}
 	}
 	
+	/**
+	 * 用户下线
+	 * @param session
+	 * @return
+	 */
 	@RequestMapping("/offline")
 	public String clientOffline(HttpSession session) {
 		session.removeAttribute("client");
-		return "redirect:index.jsp";
+		return "redirect:/";
 	}
 }

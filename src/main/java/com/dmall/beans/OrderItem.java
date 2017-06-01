@@ -39,6 +39,12 @@ public class OrderItem {
 		this.orderItemPrice = orderItemPrice;
 	}
 
+	public OrderItem(Order order, Client client, int packState) {
+		this.order = order;
+		this.client = client;
+		this.packState = packState;
+	}
+
 	public Integer getOrderItemId() {
 		return orderItemId;
 	}

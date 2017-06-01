@@ -20,7 +20,8 @@ import com.dmall.service.OrderService;
 import com.dmall.service.ProductService;
 
 /**
- * 与商品有关的控制器
+ * 与商品有关的控制
+ * 
  * @author wch
  *
  */
@@ -32,10 +33,15 @@ public class ProductController {
 
 	@Autowired
 	private OrderItemService orderItemService;
-	
-	@Autowired 
+
+	@Autowired
 	private OrderService orderService;
 
+	/**
+	 * 查询商品页
+	 * 
+	 * @return
+	 */
 	@RequestMapping("/product")
 	public String product() {
 		return "listAllProducts";
@@ -45,7 +51,7 @@ public class ProductController {
 	 * 查询商品目录 对于boostrap-table，返回的json必须包含total(总数)和rows(数据)
 	 * 
 	 * @param offset 偏移量
-	 * @param limit  每页数量
+	 * @param limit 每页数量
 	 * @param search 搜索关键字
 	 * @return
 	 */
@@ -56,7 +62,7 @@ public class ProductController {
 	}
 
 	/**
-	 * 购物车增加订单项
+	 * 向购物车增加订单项
 	 * 
 	 * @param productId
 	 * @param productQuantity
@@ -70,14 +76,15 @@ public class ProductController {
 		if (null == client) {
 			return false;
 		}
-		
+
 		orderItemService.addOrderItem(client, productId, productQuantity);
-		// $.ajax，不返回参数就无法使用success回调，待查
+		
 		return true;
 	}
 
 	/**
 	 * 根据登录客户信息查询相应购物车信息
+	 * 
 	 * @param session
 	 * @return
 	 */
@@ -89,19 +96,19 @@ public class ProductController {
 		if (null == client) {
 			throw new NoClientException("用户未登录[滑稽]~");
 		}
-		
+
 		List<OrderItem> orderItems = orderItemService.queryOrderItem(client);
 		double price = orderItemService.querySumOfUnPackedOrderItem(client);
-		
+
 		mv.addObject("orderItems", orderItems);
 		mv.addObject("sumOfOrderItem", price);
 		mv.setViewName("cart");
 
 		return mv;
 	}
-	
+
 	/**
-	 * 处理未登录时用到客户信息的空指针异常
+	 * 处理未登录访问个人信息异常
 	 * 
 	 * @param ex
 	 * @return
@@ -113,19 +120,25 @@ public class ProductController {
 		mv.setViewName("forward:ErrorPage/error.jsp");
 		return mv;
 	}
-	
+
+	/**
+	 * 支付处理
+	 * 
+	 * @param session
+	 * @return
+	 */
 	@RequestMapping(value = "/payOrder", produces = "text/html; charset=UTF-8")
 	@ResponseBody
 	public String payOrder(HttpSession session) {
 		Client client = (Client) session.getAttribute("client");
-		
+
 		String tip = "支付失败，请稍候重试！";
-		
+
 		int res = orderService.packOrder(client);
 		if (res > 0) {
 			tip = "支付成功(^∇^*)去首页发现更多~";
 		}
-		
+
 		return tip;
 	}
 }

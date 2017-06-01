@@ -65,6 +65,8 @@
 											${client.username }<strong class="caret"></strong>
 										</a>
 										<ul class="dropdown-menu">
+											<li><a href="order"><span class="glyphicon glyphicon-th-list"></span>历史订单</a></li>
+											<li class="divider"></li>
 											<li><a href="offline"><span class="glyphicon glyphicon-off"></span>退出登录</a></li>
 										</ul>
 									</li>
@@ -104,7 +106,7 @@
 				<!-- 商品展示列表 -->
 				<div>
 					<table id="productTable">
-						<caption>点击商品加入购物车</caption>
+						<caption><span>点击商品加入购物车</span></caption>
 					</table>
 				</div>
 

@@ -11,6 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.dmall.beans.Client;
+import com.dmall.beans.Order;
 import com.dmall.beans.OrderItem;
 import com.dmall.beans.Product;
 
@@ -38,10 +39,23 @@ public class OrderItemDaoTest {
 	
 	@Test
 	public void testSelectOrderItem() {
-		Client client = new Client(2);
-		int packState = 1;
+		Client client = new Client(1);
+		int packState = 2;
 		
 		OrderItem orderItem = new OrderItem(client, packState);
+		
+		List<OrderItem> orderItems = dao.selectOrderItem(orderItem);
+		
+		log.info(orderItems.toString());
+	}
+	
+	@Test
+	public void testSelectOrderItem2() {
+		Order order = new Order(16);
+		Client client = new Client(1);
+		int packState = 2;
+		
+		OrderItem orderItem = new OrderItem(order, client, packState);
 		
 		List<OrderItem> orderItems = dao.selectOrderItem(orderItem);
 		

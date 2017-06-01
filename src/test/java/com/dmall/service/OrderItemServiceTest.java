@@ -35,11 +35,11 @@ public class OrderItemServiceTest {
 	
 	@Test
 	public void testQueryOrderItem() {
-		Client client = new Client(2);
+		Client client = new Client(5);
 		
 		List<OrderItem> orderItems = service.queryOrderItem(client);
 		
-		log.info(orderItems.size() + "");
+		log.info((orderItems == null) + "");
 		
 		for (OrderItem orderItem : orderItems) {
 			log.info(orderItem.toString());
