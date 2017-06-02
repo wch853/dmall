@@ -23,12 +23,12 @@ nav li {
 }
 
 @media ( min-width :768px) {
-	#loginDiv {
+	#formDiv {
 		top: 90px;
 	}
 }
 
-#loginAlert {
+#loginAlert, #registerAlert {
 	margin-top: 60px;
 	display: none;
 }

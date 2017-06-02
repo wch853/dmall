@@ -13,7 +13,10 @@ $(function() {
 				$confirmModal.modal('hide');
 				$('#goModal .lead').text(res);
 				// 设置点击不可关闭，键盘不可关闭
-				$('#goModal').modal({backdrop: 'static', keyboard: false});
+				$('#goModal').modal({
+					backdrop: 'static', 
+					keyboard: false
+				});
 			}
 		});
 	});

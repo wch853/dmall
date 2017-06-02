@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,10 +9,9 @@
 <base href="${pageContext.request.contextPath }/">
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="resources/js/index.js"></script>
+<script type="text/javascript" src="resources/js/register.js"></script>
 <link href="resources/css/standard.css" rel="stylesheet">
-<title>地猫商城</title>
+<title>新用户注册</title>
 </head>
 <body>
 	<div class="container-fluid">
@@ -26,16 +25,11 @@
 					</h1>
 				</div>
 				<div>
-					<img alt="pic" src="resources/img/dmall.png" id="dmallImg">
-					<h3 class="pull-right">
-						<a class="btn btn-primary btn-large"
-							href="https://www.tmall.com/" target="_blank">支持正版请移步  >></a>
-					</h3>
-					<br>
+					<a href="product"><img alt="pic" src="resources/img/dmall2.png" id="dmallImg"></a>
 				</div>
 			</div>
 			
-			<!-- 右侧登录入口 -->
+			<!-- 右侧注册表单 -->
 			<div class="col-md-3 col-xs-12" id="formDiv">
 				<form>
 					<div class="form-group">
@@ -50,19 +44,16 @@
 						<button type="reset" class="btn btn-default">
 							<strong>重置</strong>
 						</button>
-						<button type="button" id="loginBtn" class="btn btn-default">
-							<strong>登录</strong>
+						<button type="button" id="registerBtn" class="btn btn-default">
+							<strong>注册</strong>
 						</button>
 					</div>
-					<span>> 还没有账号？</span><a href="register">立即注册</a>
 				</form>
 				
-				<!-- 登录失败弹出提示 -->
-				<div id="loginAlert" class="alert alert-warning"></div>
+				<!-- 注册失败弹出提示 -->
+				<div id="registerAlert" class="alert alert-warning"></div>
 			</div>
-			
-		</div>	<!-- row -->
-	
-	</div>	<!-- container -->
+		</div>
+	</div>
 </body>
 </html>

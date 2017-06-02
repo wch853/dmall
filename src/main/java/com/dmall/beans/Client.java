@@ -19,6 +19,11 @@ public class Client {
 		this.clientId = clientId;
 	}
 
+	public Client(String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
+
 	public Integer getClientId() {
 		return clientId;
 	}

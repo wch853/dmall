@@ -30,4 +30,13 @@ public class ClientDaoTest {
 		
 		log.info(flag + "");
 	}
+	
+	@Test
+	public void testRegister() {
+		String username = "wch151561";
+		String password = "123456";
+		Client client = new Client(username, password);
+		dao.insertClient(client);
+		log.info((client.getClientId() == null) + "");
+	}
 }

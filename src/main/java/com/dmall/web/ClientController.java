@@ -54,4 +54,26 @@ public class ClientController {
 		session.removeAttribute("client");
 		return "redirect:/";
 	}
+	
+	@RequestMapping("/register")
+	public String goRegister() {
+		return "register";
+	}
+	
+	@RequestMapping("/registerInfo")
+	@ResponseBody
+	public Object register(HttpSession session, String username, String password) {
+		// 注册
+		Client client = service.registerClient(username, password);
+		
+		// 注册失败
+		if(null == client) {
+			return false;
+		}
+		
+		// 注册成功，把新注册用户信息加入session
+		session.setAttribute("client", client);
+		
+		return  true;
+	}
 }

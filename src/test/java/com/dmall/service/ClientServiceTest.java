@@ -28,4 +28,14 @@ public class ClientServiceTest {
 		
 		log.info((client == null) + "");
 	}
+	
+	@Test 
+	public void testRegister() {
+		String username = "wch853";
+		String password = "12345";
+		
+		Client client = service.registerClient(username, password);
+		
+		log.info((client == null) + "");
+	}
 }

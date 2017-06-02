@@ -18,4 +18,13 @@ public class ClientServiceImpl implements ClientService {
 		return dao.checkUser(username, password);
 	}
 
+	@Override
+	public Client registerClient(String username, String password) {
+		
+		Client client = new Client(username, password);
+		int res = dao.insertClient(client);
+		
+		return res > 0 ? client : null;
+	}
+
 }

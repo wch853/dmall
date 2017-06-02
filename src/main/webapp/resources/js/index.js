@@ -13,7 +13,8 @@ $(function() {
 			},
 			success : function(res) {
 				if (res == false) {
-					$('div.alert').fadeIn(500).delay(3000).fadeOut(1000);
+					$('div.alert').text('登录失败了(´･ω)~ 请检查您的用户名密码是否正确ʅ(‾◡◝)ʃ')
+								  .fadeIn(500).delay(3000).fadeOut(1000);
 				} else {
 					window.location.href = "product";
 				}

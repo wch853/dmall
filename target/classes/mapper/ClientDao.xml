@@ -9,4 +9,9 @@
 		FROM client 
 		WHERE username = #{username} and password = #{password}
 	</select>
+	
+	<insert id="insertClient" useGeneratedKeys="true" keyProperty="clientId">
+		INSERT IGNORE INTO client(username, password)
+		VALUES(#{username}, #{password})
+	</insert>
 </mapper>

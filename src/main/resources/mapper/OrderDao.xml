@@ -14,7 +14,6 @@
 		FROM order_
 		WHERE client_id = #{clientId}
 		ORDER BY order_id DESC
-		LIMIT 0, 5
 	</select>
 	
 </mapper>
