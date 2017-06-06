@@ -1,4 +1,4 @@
-package com.dmall.beans;
+package com.dmall.beans.repository;
 
 /**
  * 商品实体类
@@ -14,6 +14,7 @@ public class Product {
 	private int productPrice;
 	// 以元为单位
 	private double doublePrice;
+	private int storage;
 
 	public Product() {
 		super();
@@ -55,10 +56,18 @@ public class Product {
 		this.productPrice = productPrice;
 	}
 
+	public int getStorage() {
+		return storage;
+	}
+
+	public void setStorage(int storage) {
+		this.storage = storage;
+	}
+
 	@Override
 	public String toString() {
 		return "Product [productId=" + productId + ", productName=" + productName + ", productPrice=" + productPrice
-				+ ", doublePrice=" + doublePrice + "]";
+				+ ", doublePrice=" + doublePrice + ", storage=" + storage + "]";
 	}
 
 }

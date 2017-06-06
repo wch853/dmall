@@ -2,8 +2,8 @@ package com.dmall.service;
 
 import java.util.List;
 
-import com.dmall.beans.Client;
-import com.dmall.beans.OrderItem;
+import com.dmall.beans.project.OrderItem;
+import com.dmall.beans.user.Client;
 
 public interface OrderItemService {
 	

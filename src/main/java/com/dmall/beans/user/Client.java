@@ -1,4 +1,4 @@
-package com.dmall.beans;
+package com.dmall.beans.user;
 
 /**
  * 客户实体类

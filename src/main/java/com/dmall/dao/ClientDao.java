@@ -2,7 +2,7 @@ package com.dmall.dao;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.dmall.beans.Client;
+import com.dmall.beans.user.Client;
 
 public interface ClientDao {
 	

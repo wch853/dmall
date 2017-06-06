@@ -12,10 +12,14 @@
 	<select id="selectOrderItem" resultMap="orderItemMap">
 		SELECT order_item_id, product_id, product_quantity
 		FROM order_item
-		WHERE client_id = #{client.clientId} AND pack_state = #{packState}
-		<if test="null != order">
-			AND order_id = #{order.orderId}
-		</if>
+		<where>
+			<if test="null != client">
+				AND client_id = #{client.clientId} AND pack_state = #{packState}
+			</if>
+			<if test="null != order">
+				AND order_id = #{order.orderId}
+			</if>
+		</where>
 	</select>
 	
 	<resultMap type="OrderItem" id="orderItemMap">
@@ -25,7 +29,7 @@
 	</resultMap>
 	
 	<select id="selectProductById" resultType="Product">
-		SELECT product_id, product_name, product_price
+		SELECT product_id, product_name, product_price, storage
 		FROM product 
 		WHERE product_id = #{product_id}
 	</select>

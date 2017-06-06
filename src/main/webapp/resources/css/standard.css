@@ -3,6 +3,14 @@
 	margin-top: 50px;
 }
 
+#nullTip {
+	margin-top: 30px;
+}
+
+#titleImg {
+	width: 30%;
+}
+
 /*nav*/
 nav li {
 	font-size: 16px;
@@ -61,10 +69,6 @@ ul {
 	font-weight: bold;
 }
 
-#searchImg {
-	width: 30%;
-}
-
 #search {
 	position: absolute;
 	top: 16px;
@@ -89,10 +93,6 @@ ul {
 #totalPrice {
 	font-weight: bold;
 	color: #ff9900;
-}
-
-#nullCartTip {
-	margin-top: 30px;
 }
 
 /*error.jsp*/

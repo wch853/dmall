@@ -9,11 +9,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.dmall.beans.Client;
-import com.dmall.beans.OrderItem;
-import com.dmall.beans.Product;
+import com.dmall.beans.project.OrderItem;
+import com.dmall.beans.repository.Product;
+import com.dmall.beans.user.Client;
 import com.dmall.dao.OrderItemDao;
-import com.dmall.enums.PackStateEnum;
+import com.dmall.enums.OrderItemStateEnum;
 import com.dmall.service.OrderItemService;
 
 @Service
@@ -41,7 +41,7 @@ public class OrderItemServiceImpl implements OrderItemService {
 	public List<OrderItem> queryOrderItem(Client client) {
 		
 		// 查询的是未打包，即未生成为订单的订单项
-		int packState = PackStateEnum.UNPACKED.getState();
+		int packState = OrderItemStateEnum.UNPACKED.getState();
 		OrderItem orderItem = new OrderItem(client, packState);
 		List<OrderItem> orderItems = dao.selectOrderItem(orderItem);
 		
@@ -77,7 +77,7 @@ public class OrderItemServiceImpl implements OrderItemService {
 	@Override
 	public double querySumOfUnPackedOrderItem(Client client) {
 		// 查询的是未打包，即未生成为订单的订单项
-		int packState = PackStateEnum.UNPACKED.getState();
+		int packState = OrderItemStateEnum.UNPACKED.getState();
 		OrderItem orderItem = new OrderItem(client, packState);
 		
 		int sum = 0;

@@ -1,9 +1,13 @@
 # dmall
 DMALL商城
+
 前端响应式布局
+
+动态sql
 
 #### 框架与库
 Spring、SpringMVC、Mybatis
+
 Bootstrap、jQuery、Bootstrap-table
 
 #### 配置

@@ -19,4 +19,9 @@
 		LIMIT #{offset}, #{limit}
 	</select>
 	
+	<update id="updateStorage">
+		UPDATE product
+		SET storage = storage - #{productQuantity}
+		WHERE product_id = #{productId}
+	</update>
 </mapper> 

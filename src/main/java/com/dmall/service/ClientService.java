@@ -1,6 +1,6 @@
 package com.dmall.service;
 
-import com.dmall.beans.Client;
+import com.dmall.beans.user.Client;
 
 public interface ClientService {
 	

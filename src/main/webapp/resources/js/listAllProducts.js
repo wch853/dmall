@@ -63,7 +63,7 @@ $(function() {
 		}
 	}
 	
-	/*增加按钮点击事件*/
+	/*改变数量事件*/
 	$('#addBut').click(function() {
 		var $numText = $('#numText');
 		if (regNumber()) {

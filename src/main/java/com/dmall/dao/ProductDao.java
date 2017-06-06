@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.dmall.beans.Product;
+import com.dmall.beans.repository.Product;
 
 public interface ProductDao {
 	
@@ -16,4 +16,7 @@ public interface ProductDao {
 								@Param("limit") int limit, 
 								@Param("search") String search);
 	
+	// 发货时减库存
+	int updateStorage(@Param("productId") Integer productId, 
+					  @Param("productQuantity") int productQuantity);
 }

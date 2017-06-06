@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.dmall.beans.OrderItem;
+import com.dmall.beans.project.OrderItem;
 
 public interface OrderItemDao {
 

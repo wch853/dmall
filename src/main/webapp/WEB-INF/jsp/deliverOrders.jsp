@@ -12,8 +12,9 @@
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="resources/js/deliverOrders.js"></script>
 <link href="resources/css/standard.css" rel="stylesheet">
-<title>历史订单</title>
+<title>处理用户订单</title>
 </head>
 <body>
 	<div id="wrapper">
@@ -39,19 +40,16 @@
 							</li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
-							<li>
-								<a href="cart">
-									<span class="glyphicon glyphicon-shopping-cart">购物车</span>
-								</a>
-							</li>
 							<li class="dropdown">
 								<a class="dropdown-toggle" data-toggle="dropdown">
-									${client.username }<strong class="caret"></strong>
+									${admin.username }<strong class="caret"></strong>
 								</a>
 								<ul class="dropdown-menu">
-									<li><a href="order"><span class="glyphicon glyphicon-th-list"></span>历史订单</a></li>
+									<li><a href="admin/order"><span class="glyphicon glyphicon-th-list"></span>处理订单</a></li>
+									<li><a href="admin/purchase"><span class="glyphicon glyphicon-th-list"></span>采购管理</a></li>
+									<li><a href="admin/receive"><span class="glyphicon glyphicon-th-list"></span>收货管理</a></li>
 									<li class="divider"></li>
-									<li><a href="offline"><span class="glyphicon glyphicon-off"></span>退出登录</a></li>
+									<li><a href="admin/offline"><span class="glyphicon glyphicon-off"></span>退出登录</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -67,15 +65,14 @@
 						<img alt="pic" id="titleImg" src="resources/img/dmall2.png">
 						
 						<div class="pull-right">
-							<h4>我的订单记录</h4>
+							<h4>待处理用户订单</h4>
 						</div>
  					</div>
 					
 					<c:choose>
 						<c:when test="${empty orders }">
 							<div id="nullTip" class="alert alert-warning">
-								<span>历史订单为空ʅ(‾◡◝)ʃ快去选购商品吧~</span>
-								<a href="product">所有商品</a>
+								<span>待处理用户订单为空ʅ(‾◡◝)ʃ</span>
 							</div>
 						</c:when>
 						<c:otherwise>
@@ -83,18 +80,17 @@
 								<table class="table table-striped table-bordered">
 									<caption>
 										订单编号：<span>${order.orderId }</span>
+										客户编号：<span>${order.client.clientId }</span>
 										下单时间：<span><fmt:formatDate value="${order.createDate }" pattern="yyyy-MM-dd HH:mm:ss"/></span>
 										订单总价：<span>${order.doublePrice }</span>
-										发货状态：<span <c:if test="${order.orderState == 1 }">style="color :red;"</c:if>>
-													<c:if test="${order.orderState == 1 }">未发货</c:if>
-													<c:if test="${order.orderState == 2 }">已发货</c:if>
-												 </span>
 									</caption>
 									<thead>
 										<tr>
 											<th>订单项编号</th>
 											<th>商品名称</th>
 											<th>商品数量</th>
+											<th>库存数量</th>
+											<th>缺件数量</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -103,10 +99,16 @@
 												<td>${orderItem.orderItemId }</td>
 												<td>${orderItem.product.productName }</td>
 												<td>${orderItem.productQuantity }</td>
+												<td>${orderItem.product.storage }</td>
+												<%-- 若商品数量大于库存，显示缺件数，否则显示0 --%>
+												<td>${orderItem.product.storage > 
+														orderItem.productQuantity ? 
+														0 : orderItem.productQuantity - orderItem.product.storage }</td>
 											</tr>
 										</c:forEach>
 									</tbody>
 								</table>
+								<button id="${order.orderId }" class="btn btn-primary pull-right deliverBtn">确认发货</button>
 							</c:forEach>
 						</c:otherwise>
 					</c:choose>
@@ -115,6 +117,5 @@
 			
 		</div>	<!-- container -->
 	</div>	<!-- wrapper -->
-			
 </body>
 </html>

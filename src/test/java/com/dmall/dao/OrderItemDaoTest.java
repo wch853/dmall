@@ -10,10 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.dmall.beans.Client;
-import com.dmall.beans.Order;
-import com.dmall.beans.OrderItem;
-import com.dmall.beans.Product;
+import com.dmall.beans.project.Order;
+import com.dmall.beans.project.OrderItem;
+import com.dmall.beans.repository.Product;
+import com.dmall.beans.user.Client;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:spring/spring-dao.xml")

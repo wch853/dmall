@@ -9,11 +9,42 @@
 		VALUES(#{client.clientId}, #{orderPrice})
 	</insert>
 	
-	<select id="selectOrderByClient" resultType="Order">
-		SELECT order_id, order_price, create_date
+	<select id="selectOrder" resultMap="orderMap">
+		SELECT order_id, client_id, order_price, create_date, order_state
 		FROM order_
-		WHERE client_id = #{clientId}
+		<where>
+			<if test="null != client">
+				AND client_id = #{client.clientId}
+			</if>
+			<if test="null != orderState">
+				AND order_state = #{orderState}
+			</if>
+			<if test="null != orderId">
+				AND order_id = #{orderId}
+			</if>
+		</where>
 		ORDER BY order_id DESC
 	</select>
 	
+	<resultMap type="Order" id="orderMap">
+		<id column="order_id" property="orderId"/>
+		<result column="order_price" property="orderPrice"/>
+		<result column="create_date" property="createDate"/>
+		<result column="order_state" property="orderState"/>
+		<association property="client" select="selectClientById" column="client_id">
+			<id column="client_id" property="clientId"/>
+		</association>
+	</resultMap>
+	
+	<select id="selectClientById" resultType="Client">
+		SELECT client_id
+		FROM client
+		WHERE client_id = #{client_id}
+	</select>
+	
+	<update id="updateOrderState">
+		UPDATE order_
+		SET order_state = #{orderState}
+		WHERE order_id = #{orderId}
+	</update>
 </mapper>

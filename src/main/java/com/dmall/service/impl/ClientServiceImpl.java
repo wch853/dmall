@@ -3,7 +3,7 @@ package com.dmall.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.dmall.beans.Client;
+import com.dmall.beans.user.Client;
 import com.dmall.dao.ClientDao;
 import com.dmall.service.ClientService;
 

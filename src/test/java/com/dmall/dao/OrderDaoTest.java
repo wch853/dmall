@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.dmall.beans.Client;
-import com.dmall.beans.Order;
+import com.dmall.beans.project.Order;
+import com.dmall.beans.user.Client;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:spring/spring-dao.xml"})
@@ -34,7 +34,22 @@ public class OrderDaoTest {
 	
 	@Test
 	public void testSelectOrder() {
-		List<Order> orders = orderDao.selectOrderByClient(new Client(1));
+		Client client = new Client(1);
+		List<Order> orders = orderDao.selectOrder(new Order(client));
 		log.info(orders.toString());
+	}
+	
+	@Test
+	public void testSelectOrder2() {
+		List<Order> orders = orderDao.selectOrder(new Order(1));
+		log.info(orders.toString());
+	}
+	
+	@Test
+	public void testUpdateOrderState() {
+		Order order = new Order(29, 2);
+		int res = orderDao.updateOrderState(order);
+		
+		log.info(res + "");
 	}
 }

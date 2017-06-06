@@ -63,7 +63,7 @@
 				<div class="col-md-6 col-md-offset-3 col-xs-12">
 					
 					<div>
-						<img alt="pic" id="searchImg" src="resources/img/dmall2.png">
+						<img alt="pic" id="titleImg" src="resources/img/dmall2.png">
 						
 						<div class="pull-right">
 							<h4>我的购物车</h4>
@@ -72,7 +72,7 @@
 					
 					<c:choose>
 						<c:when test="${empty orderItems }">
-							<div id="nullCartTip" class="alert alert-warning">
+							<div id="nullTip" class="alert alert-warning">
 								<span>购物车为空ʅ(‾◡◝)ʃ快去选购商品吧~</span>
 								<a href="product">所有商品</a>
 							</div>

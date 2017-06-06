@@ -1,4 +1,7 @@
-package com.dmall.beans;
+package com.dmall.beans.project;
+
+import com.dmall.beans.repository.Product;
+import com.dmall.beans.user.Client;
 
 /**
  * 订单项实体类
@@ -43,6 +46,10 @@ public class OrderItem {
 		this.order = order;
 		this.client = client;
 		this.packState = packState;
+	}
+	
+	public OrderItem(Order order) {
+		this.order = order;
 	}
 
 	public Integer getOrderItemId() {

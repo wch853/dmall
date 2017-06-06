@@ -1,7 +1,9 @@
-package com.dmall.beans;
+package com.dmall.beans.project;
 
 import java.util.Date;
 import java.util.List;
+
+import com.dmall.beans.user.Client;
 
 /**
  * 订单实体类
@@ -16,6 +18,7 @@ public class Order {
 	private Date createDate;
 	private List<OrderItem> orderItems;
 	private double doublePrice;
+	private Integer orderState;
 
 	public Order() {
 		super();
@@ -28,6 +31,19 @@ public class Order {
 	public Order(Client client, int orderPrice) {
 		this.client = client;
 		this.orderPrice = orderPrice;
+	}
+
+	public Order(Client client) {
+		this.client = client;
+	}
+
+	public Order(int orderState) {
+		this.orderState = orderState;
+	}
+
+	public Order(Integer orderId, Integer orderState) {
+		this.orderId = orderId;
+		this.orderState = orderState;
 	}
 
 	public Integer getOrderId() {
@@ -69,7 +85,7 @@ public class Order {
 	public void setOrderItems(List<OrderItem> orderItems) {
 		this.orderItems = orderItems;
 	}
-	
+
 	public double getDoublePrice() {
 		return doublePrice;
 	}
@@ -78,10 +94,19 @@ public class Order {
 		this.doublePrice = doublePrice;
 	}
 
+	public Integer getOrderState() {
+		return orderState;
+	}
+
+	public void setOrderState(Integer orderState) {
+		this.orderState = orderState;
+	}
+
 	@Override
 	public String toString() {
 		return "Order [orderId=" + orderId + ", client=" + client + ", orderPrice=" + orderPrice + ", createDate="
-				+ createDate + ", orderItems=" + orderItems + "]";
+				+ createDate + ", orderItems=" + orderItems + ", doublePrice=" + doublePrice + ", orderState="
+				+ orderState + "]";
 	}
 
 }

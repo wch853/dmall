@@ -6,7 +6,7 @@ package com.dmall.enums;
  * @author wch
  *
  */
-public enum PackStateEnum {
+public enum OrderItemStateEnum {
 
 	UNPACKED(1, "未打包"), PACKED(2, "已打包");
 
@@ -21,7 +21,7 @@ public enum PackStateEnum {
 		return info;
 	}
 
-	private PackStateEnum(int state, String info) {
+	private OrderItemStateEnum(int state, String info) {
 		this.state = state;
 		this.info = info;
 	}
@@ -32,8 +32,8 @@ public enum PackStateEnum {
 	 * @param state
 	 * @return
 	 */
-	public PackStateEnum getPackState(int state) {
-		for (PackStateEnum packStateEnum : values()) {
+	public OrderItemStateEnum getPackState(int state) {
+		for (OrderItemStateEnum packStateEnum : values()) {
 			if (packStateEnum.getState() == state) {
 				return packStateEnum;
 			}
