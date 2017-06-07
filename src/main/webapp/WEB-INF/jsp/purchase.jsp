@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,9 +11,11 @@
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="https://cdn.bootcss.com/bootstrap-select/1.12.2/css/bootstrap-select.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
 <script type="text/javascript" src="resources/js/deliverOrders.js"></script>
 <link href="resources/css/standard.css" rel="stylesheet">
-<title>处理用户订单</title>
+<title>采购管理</title>
 </head>
 <body>
 	<div id="wrapper">
@@ -65,72 +66,54 @@
 						<img alt="pic" id="titleImg" src="resources/img/dmall2.png">
 						
 						<div class="pull-right">
-							<h4>待处理用户订单</h4>
+							<h4>下达采购订单</h4>
 						</div>
+						
+						<table class="table table-striped table-bordered">
+							<thead>
+								<tr><th colspan="5" class="text-center">产品采购订单</th></tr>
+							</thead>
+							
+							<tbody>
+								<tr id="provTd">
+									<td>选择供货单位</td>
+									<td colspan="4">
+										<select class="selectpicker text-center">
+											<c:forEach items="${providers }" var="provider">
+												<option>${provider.providerName }</option>
+											</c:forEach>
+										</select>
+									</td>
+								</tr>
+							</tbody>
+							
+							<thead>
+								<tr>
+									<th>产品编号</th>
+									<th>产品名称</th>
+									<th>产品库存</th>
+									<th>采购数量</th>
+									<th><button class="btn btn-xs btn-primary pull-right">批量采购</button></th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach items="${products }" var="product">
+									<tr id="prodTd">
+										<td>${product.productId }</td>
+										<td>${product.productName }</td>
+										<td>${product.storage }</td>
+										<td colspan="2">
+											<input id="input${product.productId }" type="text" value="0" class="form-control">
+										</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+						<button class="btn btn-primary pull-right">确认发货</button>
  					</div>
-					
-					<c:choose>
-						<c:when test="${empty orders }">
-							<div id="nullTip" class="alert alert-warning">
-								<span>待处理用户订单为空ʅ(‾◡◝)ʃ</span>
-							</div>
-						</c:when>
-						<c:otherwise>
-							<c:forEach items="${orders }" var="order" varStatus="st">
-								<table class="table table-striped table-bordered">
-									<caption>
-										订单编号：<span>${order.orderId }</span>
-										客户编号：<span>${order.client.clientId }</span>
-										下单时间：<span><fmt:formatDate value="${order.createDate }" pattern="yyyy-MM-dd HH:mm:ss"/></span>
-										订单总价：<span>${order.doublePrice }</span>
-									</caption>
-									<thead>
-										<tr>
-											<th>订单项编号</th>
-											<th>商品名称</th>
-											<th>商品数量</th>
-											<th>库存数量</th>
-											<th>缺件数量</th>
-										</tr>
-									</thead>
-									<tbody>
-										<c:forEach items="${order.orderItems }" var="orderItem">
-											<tr>
-												<td>${orderItem.orderItemId }</td>
-												<td>${orderItem.product.productName }</td>
-												<td>${orderItem.productQuantity }</td>
-												<td>${orderItem.product.storage }</td>
-												<%-- 若商品数量大于库存，显示缺件数，否则显示0 --%>
-												<td>${orderItem.product.storage > 
-														orderItem.productQuantity ? 
-														0 : orderItem.productQuantity - orderItem.product.storage }</td>
-											</tr>
-										</c:forEach>
-									</tbody>
-								</table>
-								<button id="${order.orderId }" class="btn btn-primary pull-right deliverBtn">确认发货</button>
-							</c:forEach>
-						</c:otherwise>
-					</c:choose>
-				</div>
-				
-				<div id="deliverModal" class="modal fade">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h4 class="modal-title">提示</h4>
-							</div>
-							<div class="modal-body"><span class="lead"></span></div>
-							<div class="modal-footer">
-								<a href="admin/order" type="button" class="btn btn-primary">确定</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				
-			</div>	<!-- page-wrapper -->
-			
-		</div>	<!-- container -->
-	</div>	<!-- wrapper -->
+ 				</div>
+ 			</div>	<!-- page-wrapper -->
+ 		</div>	<!-- container -->
+ 	</div>	<!-- wrapper -->
 </body>
 </html>

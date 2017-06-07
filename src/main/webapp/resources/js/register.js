@@ -33,6 +33,9 @@ $(function() {
 					$(':input').val('');
 					$alert.html('注册成功，快去<a href="product">挑选商品</a>吧~').fadeIn(500);
 				}
+			},
+			error : function() {
+				alert('获取请求失败，请稍后重试！');
 			}
 		});
 	}

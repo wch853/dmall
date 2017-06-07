@@ -131,7 +131,7 @@
 								</div>
 								<div class="modal-body"><span class="lead"></span></div>
 								<div class="modal-footer">
-									<button id="goProduct" type="button" class="btn btn-primary">确定</button>
+									<a href="product" type="button" class="btn btn-primary">确定</a>
 								</div>
 							</div>
 						</div>

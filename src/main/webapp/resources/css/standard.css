@@ -3,6 +3,10 @@
 	margin-top: 50px;
 }
 
+#wrapper {
+	margin-bottom: 50px;
+}
+
 #nullTip {
 	margin-top: 30px;
 }
@@ -100,7 +104,7 @@ ul {
 	margin-top: 200px;
 }
 
-/*lisOrders*/
+/*lisOrders.jsp*/
 table caption {
 	font-weight: bold;
 	text-align: right;
@@ -108,4 +112,18 @@ table caption {
 table caption span {
 	color: #ff9900;
 	margin-right: 10px;
+}
+
+table {
+	margin-top: 10px;
+}
+
+/*purchase.jsp*/
+#provTd > td {
+	vertical-align: middle;
+	font-weight: bold;
+}
+
+#prodTd > td {
+	vertical-align: middle;
 }

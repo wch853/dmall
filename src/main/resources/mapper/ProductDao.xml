@@ -11,7 +11,7 @@
 	</select>
 
 	<select id="selectProduct" resultType="Product">
-		SELECT product_id, product_name, product_price
+		SELECT product_id, product_name, product_price, storage
 		FROM product
 		<if test="search.length() != 0">
 			WHERE product_name LIKE '%' #{search} '%'

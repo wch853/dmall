@@ -17,12 +17,11 @@ $(function() {
 					backdrop: 'static', 
 					keyboard: false
 				});
+			},
+			error : function() {
+				alert('获取请求失败，请稍后重试！');
 			}
 		});
 	});
-	
-	$('#goProduct').click(function() {
-		window.location.href = "product";
-	})
 	
 });

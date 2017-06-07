@@ -73,6 +73,13 @@ $(function() {
 			$('#ptotal').text((price * value).toFixed(2));	
 		}
 	});
+	$('#numText').keyup(function() {
+		if (regNumber()) {
+			var value = Number($('#numText').val());
+			// 计算的价格保留两位小数
+			$('#ptotal').text((price * value).toFixed(2));	
+		}
+	});
 
 	/*加入购物车点击事件*/
 	$('#submit').click(function() {

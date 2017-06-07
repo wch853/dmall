@@ -18,6 +18,9 @@ $(function() {
 				} else {
 					window.location.href = "product";
 				}
+			},
+			error : function() {
+				alert('获取请求失败，请稍后重试！');
 			}
 		});
 	});
