@@ -1,4 +1,8 @@
 /*all*/
+body {
+	font-family: '微软雅黑';
+}
+
 #page-wrapper {
 	margin-top: 50px;
 }
@@ -34,7 +38,7 @@ nav li {
 	width: 100%;
 }
 
-@media ( min-width :768px) {
+@media ( min-width : 768px) {
 	#formDiv {
 		top: 90px;
 	}
@@ -43,6 +47,12 @@ nav li {
 #loginAlert, #registerAlert {
 	margin-top: 60px;
 	display: none;
+}
+
+@media ( max-width : 768px) {
+	#loginAlert {
+		margin-top: 20px;
+	}
 }
 
 .input-group {
@@ -109,6 +119,7 @@ table caption {
 	font-weight: bold;
 	text-align: right;
 }
+
 table caption span {
 	color: #ff9900;
 	margin-right: 10px;
@@ -119,11 +130,21 @@ table {
 }
 
 /*purchase.jsp*/
-#provTd > td {
+#provTd>td {
 	vertical-align: middle;
 	font-weight: bold;
 }
 
-#prodTd > td {
+#prodTd>td {
 	vertical-align: middle;
+}
+
+th .btn-xs {
+	margin-right: 10px;
+}
+
+@media (max-width : 768px) {
+	th .btn-xs {
+		margin-bottom: 5px;
+	}
 }

@@ -13,7 +13,7 @@
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="https://cdn.bootcss.com/bootstrap-select/1.12.2/css/bootstrap-select.min.css" rel="stylesheet">
 <script src="https://cdn.bootcss.com/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
-<script type="text/javascript" src="resources/js/deliverOrders.js"></script>
+<script type="text/javascript" src="resources/js/purchase.js"></script>
 <link href="resources/css/standard.css" rel="stylesheet">
 <title>采购管理</title>
 </head>
@@ -71,12 +71,12 @@
 						
 						<table class="table table-striped table-bordered">
 							<thead>
-								<tr><th colspan="5" class="text-center">产品采购订单</th></tr>
+								<tr><th colspan="6" class="text-center">产品采购订单</th></tr>
 							</thead>
 							
 							<tbody>
 								<tr id="provTd">
-									<td>选择供货单位</td>
+									<td colspan="2">选择供货单位</td>
 									<td colspan="4">
 										<select class="selectpicker text-center">
 											<c:forEach items="${providers }" var="provider">
@@ -89,27 +89,37 @@
 							
 							<thead>
 								<tr>
+									<th><input id="allCheck" type="checkbox"></th>
 									<th>产品编号</th>
 									<th>产品名称</th>
 									<th>产品库存</th>
 									<th>采购数量</th>
-									<th><button class="btn btn-xs btn-primary pull-right">批量采购</button></th>
+									<th>
+										<button id="resetNone" class="btn btn-xs btn-primary pull-right">重置订单</button>
+										<button id="removeNone" class="btn btn-xs btn-primary pull-right">处理订单</button>
+									</th>
 								</tr>
 							</thead>
 							<tbody>
 								<c:forEach items="${products }" var="product">
 									<tr id="prodTd">
+										<td><input type="checkbox" name="singleCheck"></td>
 										<td>${product.productId }</td>
 										<td>${product.productName }</td>
 										<td>${product.storage }</td>
 										<td colspan="2">
-											<input id="input${product.productId }" type="text" value="0" class="form-control">
+											<span class="input-group" style="width : 100%">
+												<input id="${product.productId }" type="text" value="100" disabled="disabled" class="form-control">
+												<span class="input-group-btn">
+													<button class="btn btn-primary addNum" disabled="disabled">按批采购</button>
+												</span>
+											</span>
 										</td>
 									</tr>
 								</c:forEach>
 							</tbody>
 						</table>
-						<button class="btn btn-primary pull-right">确认发货</button>
+						<button id="confirmPurchase" class="btn btn-primary pull-right">确认采购</button>
  					</div>
  				</div>
  			</div>	<!-- page-wrapper -->
