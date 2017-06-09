@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.dmall.dao.PurchaseDao">
+	
+	<insert id="insertPurchase" useGeneratedKeys="true" keyProperty="purchaseId">
+		INSERT INTO purchase(provider_id, purchase_state)
+		VALUES(#{provider.providerId}, #{purchaseState})		
+	</insert>
+</mapper>

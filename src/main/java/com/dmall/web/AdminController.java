@@ -64,4 +64,11 @@ public class AdminController {
 		
 		return mv;
 	}
+	
+	@RequestMapping("/sendCata")
+	public String sendCata(String providerId, String cata) {
+		purchaseService.addPurchase(providerId, cata);
+		
+		return "purchase";
+	}
 }

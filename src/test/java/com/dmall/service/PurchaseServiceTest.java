@@ -35,4 +35,11 @@ public class PurchaseServiceTest {
 		
 		log.info(products.toString());
 	}
+	
+	@Test
+	public void testAddPurchase() {
+		Integer providerId = 2;
+		String cata = "{\"1\":\"21\", \"4\":\"33\"}";
+		service.addPurchase(providerId, cata);
+	}
 }

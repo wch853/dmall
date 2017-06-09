@@ -11,6 +11,14 @@ public class Provider {
 	private Integer providerId;
 	private String providerName;
 
+	public Provider() {
+		super();
+	}
+
+	public Provider(Integer providerId) {
+		this.providerId = providerId;
+	}
+
 	public Integer getProviderId() {
 		return providerId;
 	}

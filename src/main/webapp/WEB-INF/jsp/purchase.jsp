@@ -80,7 +80,7 @@
 									<td colspan="4">
 										<select class="selectpicker text-center">
 											<c:forEach items="${providers }" var="provider">
-												<option>${provider.providerName }</option>
+												<option id="prov-${provider.providerId }">${provider.providerName }</option>
 											</c:forEach>
 										</select>
 									</td>
@@ -102,14 +102,14 @@
 							</thead>
 							<tbody>
 								<c:forEach items="${products }" var="product">
-									<tr id="prodTd">
+									<tr class="prodTr">
 										<td><input type="checkbox" name="singleCheck"></td>
 										<td>${product.productId }</td>
 										<td>${product.productName }</td>
 										<td>${product.storage }</td>
 										<td colspan="2">
 											<span class="input-group" style="width : 100%">
-												<input id="${product.productId }" type="text" value="100" disabled="disabled" class="form-control">
+												<input id="${product.productId }" type="text" value="0" disabled="disabled" class="form-control">
 												<span class="input-group-btn">
 													<button class="btn btn-primary addNum" disabled="disabled">按批采购</button>
 												</span>
@@ -120,6 +120,23 @@
 							</tbody>
 						</table>
 						<button id="confirmPurchase" class="btn btn-primary pull-right">确认采购</button>
+						<div id="purchaseAlert" class="alert alert-warning"></div>
+ 					</div>
+ 					
+ 					<div id="purchaseTip" class="modal fade">
+ 						<div class="modal-dialog">
+ 							<div class="modal-content">
+ 								<div class="modal-header">
+ 									<h4 class="modal-title">提示</h4>
+ 								</div>
+ 								<div class="modal-body">
+ 									<span class="lead">采购订单已下达！请在到货后及时入库！</span>
+ 								</div>
+ 								<div class="modal-footer">
+ 									<a href="admin/purchase" class="btn btn-primary pull-right">确定</a>
+ 								</div>
+ 							</div>
+ 						</div>
  					</div>
  				</div>
  			</div>	<!-- page-wrapper -->
