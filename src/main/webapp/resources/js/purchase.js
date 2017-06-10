@@ -4,7 +4,7 @@ $(function() {
 	$('#allCheck').click(function() {
 		$('[name="singleCheck"]').click();
 	});
-	
+
 	// 每行复选框单击事件
 	$('[name="singleCheck"]').click(function() {
 		var $num = $(this).parent().parent().find(':text');

@@ -24,4 +24,10 @@
 		SET storage = storage - #{productQuantity}
 		WHERE product_id = #{productId}
 	</update>
+	
+	<select id="selectProductById" resultType="Product">
+		SELECT product_id, product_name, product_price, storage
+		FROM product 
+		WHERE product_id = #{product_id}
+	</select>
 </mapper> 

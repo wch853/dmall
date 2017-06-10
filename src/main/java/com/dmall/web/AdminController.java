@@ -24,6 +24,11 @@ public class AdminController {
 	
 	@Autowired
 	private PurchaseService purchaseService;
+	
+	@RequestMapping
+	public String adminLogin() {
+		return "admin";
+	}
 
 	/**
 	 * 显示未发货订单
@@ -41,7 +46,7 @@ public class AdminController {
 	}
 	
 	/**
-	 * 根据存货状态返货发货请求的结果
+	 * 根据存货状态返回发货请求的结果
 	 * @param orderId
 	 * @return
 	 */
@@ -51,6 +56,10 @@ public class AdminController {
 		return orderService.deliverOrder(orderId);
 	}
 	
+	/**
+	 * 返回采购页面数据
+	 * @return
+	 */
 	@RequestMapping("/purchase")
 	public ModelAndView purchasePage() {
 		ModelAndView mv = new ModelAndView();
@@ -65,10 +74,14 @@ public class AdminController {
 		return mv;
 	}
 	
+	/**
+	 * 接收采购数据
+	 * @param providerId
+	 * @param cata
+	 */
 	@RequestMapping("/sendCata")
-	public String sendCata(String providerId, String cata) {
+	@ResponseBody
+	public void sendCata(String providerId, String cata) {
 		purchaseService.addPurchase(providerId, cata);
-		
-		return "purchase";
 	}
 }

@@ -9,4 +9,22 @@
 		INSERT INTO purchase(provider_id, purchase_state)
 		VALUES(#{provider.providerId}, #{purchaseState})		
 	</insert>
+	
+	<select id="selectPurchase" resultMap="purchaseMap">
+		SELECT purchase_id, provider_id, create_date
+		FROM purchase
+		WHERE purchase_state = #{purchaseState}
+	</select>
+	
+	<resultMap type="Purchase" id="purchaseMap">
+		<id column="purchase_id" property="purchaseId"/>
+		<result column="create_date" property="createDate"/>
+		<association property="provider" javaType="Provider" select="selectProviderById" column="provider_id"/>
+	</resultMap>
+	
+	<select id="selectProviderById" resultType="Provider">
+		SELECT provider_name
+		FROM provider
+		WHERE provider_id = #{provider_id}
+	</select>
 </mapper>

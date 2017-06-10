@@ -69,7 +69,7 @@
 							<h4>下达采购订单</h4>
 						</div>
 						
-						<table class="table table-striped table-bordered">
+						<table class="table table-striped table-bordered table-hover">
 							<thead>
 								<tr><th colspan="6" class="text-center">产品采购订单</th></tr>
 							</thead>

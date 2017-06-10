@@ -1,5 +1,7 @@
 package com.dmall.dao;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -31,5 +33,14 @@ public class PurchaseItemDaoTest {
 		int res = dao.insertPurchaseItem(purchaseItem);
 		
 		log.info(res + "");
+	}
+	
+	@Test
+	public void testSelectPurchaseItem() {
+		Purchase purchase = new Purchase(8);
+		PurchaseItem purchaseItem = new PurchaseItem(purchase);
+		List<PurchaseItem> purchaseItems = dao.selectPurchaseItem(purchaseItem);
+		
+		log.info(purchaseItems.toString());
 	}
 }

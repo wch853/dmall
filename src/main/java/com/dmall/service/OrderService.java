@@ -13,7 +13,7 @@ public interface OrderService {
 	// 通过客户信息查询订单及对应订单项（历史订单）
 	List<Order> queryOrdersByClient(Client client);
 	
-	// 查询订单未发货
+	// 查询未发货订单
 	List<Order> queryUndeliveredOrders();
 	
 	// 根据订单id发货

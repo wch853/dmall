@@ -10,7 +10,6 @@ $(function() {
 		pageNumber : 1, 				// 加载首页 
 		pageSize : 10, 					// 每页的记录行数 
 		pageList : [10, 25, 50, 100], 	// 可供选择的分页
-		showColumns : true, 			// 显示列按钮
 		showRefresh : true, 			// 刷新按钮
 		minimumCountColumns : 1, 		// 最少允许的列数
 		showToggle : true, 				// 详细视图和列表视图切换按钮

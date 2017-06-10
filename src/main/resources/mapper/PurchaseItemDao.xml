@@ -4,9 +4,24 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.dmall.dao.PurchaseItemDao">
-	
+
 	<insert id="insertPurchaseItem">
-		INSERT INTO purchase_item(product_id, purchase_num, purchase_id)
-		VALUES(#{product.productId}, #{purchaseNum}, #{purchase.purchaseId})
+		INSERT INTO purchase_item(product_id, purchase_num,
+		purchase_id)
+		VALUES(#{product.productId}, #{purchaseNum},
+		#{purchase.purchaseId})
 	</insert>
+
+	<select id="selectPurchaseItem" resultMap="purchaseItemMap">
+		SELECT purchase_item_id, product_id, purchase_num
+		FROM purchase_item
+		WHERE purchase_id = #{purchase.purchaseId}
+	</select>
+
+	<resultMap type="PurchaseItem" id="purchaseItemMap">
+		<id column="purchase_item_id" property="purchaseItemId" />
+		<result column="purchase_num" property="purchaseNum" />
+		<association property="product" javaType="Product" column="product_id"
+			select="com.dmall.dao.ProductDao.selectProductById" />
+	</resultMap>
 </mapper>

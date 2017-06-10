@@ -25,6 +25,10 @@ public class PurchaseItem {
 		this.purchaseNum = purchaseNum;
 	}
 
+	public PurchaseItem(Purchase purchase) {
+		this.purchase = purchase;
+	}
+
 	public Integer getPurchaseItemId() {
 		return purchaseItemId;
 	}

@@ -104,11 +104,9 @@
 				</div>
 
 				<!-- 商品展示列表 -->
-				<div>
-					<table id="productTable">
-						<caption><span>点击商品加入购物车</span></caption>
-					</table>
-				</div>
+				<table id="productTable">
+					<caption><span>点击商品加入购物车</span></caption>
+				</table>
 
 				<!-- 加入购物车弹窗 -->
 				<div id="buyModal" class="modal fade">
