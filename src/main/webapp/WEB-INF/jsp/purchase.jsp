@@ -48,7 +48,7 @@
 								<ul class="dropdown-menu">
 									<li><a href="admin/order"><span class="glyphicon glyphicon-th-list"></span>订单处理</a></li>
 									<li><a href="admin/purchase"><span class="glyphicon glyphicon-th-list"></span>采购管理</a></li>
-									<li><a href="admin/receive"><span class="glyphicon glyphicon-th-list"></span>收货管理</a></li>
+									<li><a href="admin/receive"><span class="glyphicon glyphicon-th-list"></span>入库管理</a></li>
 									<li class="divider"></li>
 									<li><a href="admin/offline"><span class="glyphicon glyphicon-off"></span>退出登录</a></li>
 								</ul>
@@ -102,7 +102,7 @@
 							</thead>
 							<tbody>
 								<c:forEach items="${products }" var="product">
-									<tr class="prodTr">
+									<tr class="valignTr">
 										<td><input type="checkbox" name="singleCheck"></td>
 										<td>${product.productId }</td>
 										<td>${product.productName }</td>

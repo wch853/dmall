@@ -1,5 +1,6 @@
 package com.dmall.service.impl;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,16 +34,25 @@ public class PurchaseServiceImpl implements PurchaseService {
 	@Autowired
 	private PurchaseItemDao purchaseItemDao;
 	
+	/**
+	 * 查询所有供应商
+	 */
 	@Override
 	public List<Provider> queryProviders() {
 		return providerDao.selectProviders();
 	}
 
+	/**
+	 * 查询所有商品
+	 */
 	@Override
 	public List<Product> queryProduct() {
 		return productDao.selectProduct(0, Short.MAX_VALUE, "");
 	}
 
+	/**
+	 * 根据供应商编号和采购信息生成采购订单
+	 */
 	@Override
 	public void addPurchase(String providerId, String cata) {
 		Integer provId = Integer.valueOf(providerId.split("-")[1]);
@@ -62,6 +72,30 @@ public class PurchaseServiceImpl implements PurchaseService {
 			PurchaseItem purchaseItem = new PurchaseItem(purchase, product, purchaseNum);
 			purchaseItemDao.insertPurchaseItem(purchaseItem);
 		}
+	}
+
+	/**
+	 * 查询未收货采购订单
+	 */
+	@Override
+	public List<Purchase> queryUnreceivedPurchase() {
+		int purchaseState = PurchaseStateEnum.UNRECEIVED.getState();
+		List<Purchase> purchases = purchaseDao.selectPurchase(purchaseState);
+		
+		if (purchases.size() == 0) {
+			purchases = null;
+		}
+		
+		Iterator<Purchase> it = purchases.iterator();
+		while (it.hasNext()) {
+			Purchase purchase = it.next();
+			PurchaseItem purchaseItem = new PurchaseItem(purchase);
+			List<PurchaseItem> purchaseItems = purchaseItemDao.selectPurchaseItem(purchaseItem);
+			
+			purchase.setPurchaseItems(purchaseItems);
+		}
+		
+		return purchases;
 	}
 
 }

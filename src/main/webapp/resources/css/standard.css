@@ -40,7 +40,7 @@ nav li {
 
 @media ( min-width : 768px) {
 	#formDiv {
-		top: 90px;
+		top: 50px;
 	}
 }
 
@@ -126,7 +126,7 @@ table caption span {
 }
 
 table {
-	margin-top: 10px;
+	margin-top: 15px;
 }
 
 /*purchase.jsp*/
@@ -135,7 +135,7 @@ table {
 	font-weight: bold;
 }
 
-.prodTr>td:nth-child(-n+4) {
+.valignTr>td:nth-child(-n+4) {
 	vertical-align: middle;
 }
 

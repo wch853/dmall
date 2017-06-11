@@ -1,6 +1,7 @@
 package com.dmall.beans.purchase;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 采购订单实体类
@@ -14,6 +15,7 @@ public class Purchase {
 	private Provider provider;
 	private Date createDate;
 	private int purchaseState;
+	private List<PurchaseItem> purchaseItems;
 
 	public Purchase() {
 		super();
@@ -60,10 +62,18 @@ public class Purchase {
 		this.purchaseState = purchaseState;
 	}
 
+	public List<PurchaseItem> getPurchaseItems() {
+		return purchaseItems;
+	}
+
+	public void setPurchaseItems(List<PurchaseItem> purchaseItems) {
+		this.purchaseItems = purchaseItems;
+	}
+
 	@Override
 	public String toString() {
 		return "Purchase [purchaseId=" + purchaseId + ", provider=" + provider + ", createDate=" + createDate
-				+ ", purchaseState=" + purchaseState + "]";
+				+ ", purchaseState=" + purchaseState + ", purchaseItems=" + purchaseItems + "]";
 	}
 
 }

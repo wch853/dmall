@@ -36,6 +36,7 @@ $(function() {
 			},
 			error : function() {
 				alert('获取请求失败，请稍后重试！');
+				location.reload();
 			}
 		});
 	}

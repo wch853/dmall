@@ -31,14 +31,17 @@
 			
 			<!-- 右侧注册表单 -->
 			<div class="col-md-3 col-xs-12" id="formDiv">
+				<blockquote>
+					<p>欢迎注册</p>
+				</blockquote>
 				<form>
 					<div class="form-group">
 						<label for="username">帐号</label> 
-						<input type="text" class="form-control" id="username" />
+						<input type="text" class="form-control" id="username" placeholder="6~16位数字与英文字母组合" />
 					</div>
 					<div class="form-group">
 						<label for="password">密码</label> 
-						<input type="password" class="form-control" id="password" />
+						<input type="password" class="form-control" id="password" placeholder="6~16位数字与英文字母组合" />
 					</div>
 					<div class="pull-right">
 						<button type="reset" class="btn btn-default">

@@ -11,6 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.dmall.beans.purchase.Provider;
+import com.dmall.beans.purchase.Purchase;
 import com.dmall.beans.repository.Product;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -41,5 +42,12 @@ public class PurchaseServiceTest {
 		String providerId = "prov-2";
 		String cata = "{\"1\":\"21\", \"4\":\"33\"}";
 		service.addPurchase(providerId, cata);
+	}
+	
+	@Test
+	public void testQueryPruchase() {
+		List<Purchase> purchases = service.queryUnreceivedPurchase();
+		
+		log.info(purchases.toString());
 	}
 }

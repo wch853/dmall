@@ -60,7 +60,8 @@ $(function() {
 					});
 				},
 				error : function() {
-					alert('提交请求失败，请稍后重试！')
+					alert('获取请求失败，请稍后重试！');
+					location.reload();
 				}
 			});
 		}

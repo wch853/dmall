@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.dmall.beans.project.Order;
 import com.dmall.beans.purchase.Provider;
+import com.dmall.beans.purchase.Purchase;
 import com.dmall.beans.repository.Product;
 import com.dmall.service.OrderService;
 import com.dmall.service.PurchaseService;
@@ -83,5 +84,25 @@ public class AdminController {
 	@ResponseBody
 	public void sendCata(String providerId, String cata) {
 		purchaseService.addPurchase(providerId, cata);
+	}
+	
+	@RequestMapping("/receive")
+	public ModelAndView receive() {
+		ModelAndView mv = new ModelAndView();
+		
+		List<Purchase> purchases = purchaseService.queryUnreceivedPurchase();
+		mv.addObject("purchases", purchases);
+		mv.setViewName("receive");
+		
+		return mv;
+	}
+	
+	@RequestMapping("/sendRece")
+	@ResponseBody
+	public void sendRece(Integer productId, String rece) {
+		// TODO
+		System.out.println(productId);
+		
+		System.out.println(rece);
 	}
 }

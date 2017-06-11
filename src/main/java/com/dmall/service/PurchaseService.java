@@ -3,6 +3,7 @@ package com.dmall.service;
 import java.util.List;
 
 import com.dmall.beans.purchase.Provider;
+import com.dmall.beans.purchase.Purchase;
 import com.dmall.beans.repository.Product;
 
 public interface PurchaseService {
@@ -15,4 +16,7 @@ public interface PurchaseService {
 	
 	// 增加采购订单
 	void addPurchase(String providerId, String cata);
+	
+	// 查询未收货采购订单
+	List<Purchase> queryUnreceivedPurchase();
 }
