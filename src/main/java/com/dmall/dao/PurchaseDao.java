@@ -13,4 +13,7 @@ public interface PurchaseDao {
 	
 	// 根据采购订单状态查询采购订单
 	List<Purchase> selectPurchase(@Param("purchaseState") int purchaseState);
+	
+	// 更改采购订单状态
+	int updatePurchaseState(Purchase purchase);
 }

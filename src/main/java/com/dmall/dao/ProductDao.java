@@ -17,6 +17,10 @@ public interface ProductDao {
 								@Param("search") String search);
 	
 	// 发货时减库存
-	int updateStorage(@Param("productId") Integer productId, 
+	int updateDownStorage(@Param("productId") Integer productId, 
 					  @Param("productQuantity") int productQuantity);
+	
+	// 入库时增库存
+	int updateUpStorage(@Param("productId") Integer productId, 
+						@Param("receiveNum") int receiveNum);
 }

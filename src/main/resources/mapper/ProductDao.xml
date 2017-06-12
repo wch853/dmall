@@ -19,7 +19,7 @@
 		LIMIT #{offset}, #{limit}
 	</select>
 	
-	<update id="updateStorage">
+	<update id="updateDownStorage">
 		UPDATE product
 		SET storage = storage - #{productQuantity}
 		WHERE product_id = #{productId}
@@ -30,4 +30,10 @@
 		FROM product 
 		WHERE product_id = #{product_id}
 	</select>
+	
+	<update id="updateUpStorage">
+		UPDATE product
+		SET storage = storage + #{receiveNum}
+		WHERE product_id = #{productId}
+	</update>
 </mapper> 

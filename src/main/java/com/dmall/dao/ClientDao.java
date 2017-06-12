@@ -7,7 +7,7 @@ import com.dmall.beans.user.Client;
 public interface ClientDao {
 	
 	// 验证用户登录
-	Client checkUser(@Param("username") String username, @Param("password") String password);
+	Client selectClient(@Param("username") String username, @Param("password") String password);
 	
 	// 用户注册
 	int insertClient(Client client);

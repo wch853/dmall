@@ -15,7 +15,7 @@ public class ClientServiceImpl implements ClientService {
 	
 	@Override
 	public Client checkUser(String username, String password) {
-		return dao.checkUser(username, password);
+		return dao.selectClient(username, password);
 	}
 
 	@Override

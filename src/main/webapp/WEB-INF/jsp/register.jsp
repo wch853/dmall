@@ -54,7 +54,7 @@
 				</form>
 				
 				<!-- 注册失败弹出提示 -->
-				<div id="registerAlert" class="alert alert-warning"></div>
+				<div class="alert alert-warning wrongAlert"></div>
 			</div>
 		</div>
 	</div>

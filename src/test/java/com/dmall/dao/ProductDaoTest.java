@@ -35,8 +35,15 @@ public class ProductDaoTest {
 	}
 	
 	@Test
-	public void testUpdateStorage() {
-		int res = dao.updateStorage(1, 1);
+	public void testUpdateDownStorage() {
+		int res = dao.updateDownStorage(1, 1);
+		
+		log.info(res + "");
+	}
+	
+	@Test
+	public void testUpdateUpStorage() {
+		int res = dao.updateUpStorage(1, 50);
 		
 		log.info(res + "");
 	}

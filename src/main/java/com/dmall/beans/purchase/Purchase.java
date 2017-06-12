@@ -30,6 +30,11 @@ public class Purchase {
 		this.purchaseState = purchaseState;
 	}
 
+	public Purchase(Integer purchaseId, int purchaseState) {
+		this.purchaseId = purchaseId;
+		this.purchaseState = purchaseState;
+	}
+
 	public Integer getPurchaseId() {
 		return purchaseId;
 	}

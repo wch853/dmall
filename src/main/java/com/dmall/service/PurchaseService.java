@@ -19,4 +19,7 @@ public interface PurchaseService {
 	
 	// 查询未收货采购订单
 	List<Purchase> queryUnreceivedPurchase();
+	
+	// 采购商品入库
+	void receivePruchase(Integer purchaseId, String rece);
 }

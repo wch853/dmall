@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.dmall.beans.purchase.Provider;
 import com.dmall.beans.purchase.Purchase;
+import com.dmall.enums.PurchaseStateEnum;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:spring/spring-dao.xml")
@@ -36,5 +37,16 @@ public class PurchaseDaoTest {
 		List<Purchase> purchases = dao.selectPurchase(2);
 		
 		log.info(purchases.toString());
+	}
+	
+	@Test
+	public void testUpdatePurchaseState() {
+		Integer purchaseId = 1;
+		int purchaseState = PurchaseStateEnum.RECEIVED.getState();
+		Purchase purchase = new Purchase(purchaseId, purchaseState);
+		
+		int res = dao.updatePurchaseState(purchase);
+		
+		log.info(res + "");
 	}
 }

@@ -83,7 +83,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 		List<Purchase> purchases = purchaseDao.selectPurchase(purchaseState);
 		
 		if (purchases.size() == 0) {
-			purchases = null;
+			return null;
 		}
 		
 		Iterator<Purchase> it = purchases.iterator();
@@ -98,4 +98,31 @@ public class PurchaseServiceImpl implements PurchaseService {
 		return purchases;
 	}
 
+	/**
+	 * 入库处理，包括更改采购订单状态、增库存、修改采购订单项入库数量
+	 */
+	@Override
+	public void receivePruchase(Integer purchaseId, String rece) {
+		int purchaseState = PurchaseStateEnum.RECEIVED.getState();
+		Purchase purchase = new Purchase(purchaseId, purchaseState);
+		// 更改采购订单状态
+		purchaseDao.updatePurchaseState(purchase);
+		
+		JSONObject obj = JSON.parseObject(rece);
+		for (String key : obj.keySet()) {
+			Integer productId = Integer.valueOf(key);
+			int receiveNum = obj.getIntValue(key);
+			// 增库存
+			productDao.updateUpStorage(productId, receiveNum);
+			
+			Product product = new Product(productId);
+			PurchaseItem purchaseItem = new PurchaseItem(purchase);
+			purchaseItem.setProduct(product);
+			purchaseItem.setReceiveNum(receiveNum);
+			// 修改订单项入库数量
+			purchaseItemDao.updateReceiveNum(purchaseItem);
+		}
+		
+	}
+	
 }

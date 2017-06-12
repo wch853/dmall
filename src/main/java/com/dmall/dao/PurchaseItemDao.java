@@ -11,4 +11,7 @@ public interface PurchaseItemDao {
 	
 	// 根据采购订单查询采购订单项
 	List<PurchaseItem> selectPurchaseItem(PurchaseItem purchaseItem);
+	
+	// 入库更新采购订单项入库数量
+	void updateReceiveNum(PurchaseItem purchaseItem);
 }

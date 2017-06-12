@@ -24,4 +24,10 @@
 		<association property="product" javaType="Product" column="product_id"
 			select="com.dmall.dao.ProductDao.selectProductById" />
 	</resultMap>
+	
+	<update id="updateReceiveNum">
+		UPDATE purchase_item
+		SET receive_num = #{receiveNum}
+		WHERE purchase_id = #{purchase.purchaseId} AND product_id = #{product.productId}
+	</update>
 </mapper>

@@ -25,5 +25,14 @@
 		<property name="prefix" value="/WEB-INF/jsp/"/>
 		<property name="suffix" value=".jsp"/>
 	</bean>
+	
+	<!-- 注册拦截器 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/admin/*"/>
+			<mvc:exclude-mapping path="/admin/login"/>
+			<bean class="com.dmall.interceptor.AdminInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
 		
 </beans>		

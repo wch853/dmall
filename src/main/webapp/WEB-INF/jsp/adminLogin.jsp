@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,9 +10,9 @@
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="resources/js/index.js"></script>
+<script type="text/javascript" src="resources/js/adminLogin.js"></script>
 <link href="resources/css/standard.css" rel="stylesheet">
-<title>地猫商城</title>
+<title>管理员登录</title>
 </head>
 <body>
 	<div class="container-fluid">
@@ -22,25 +22,18 @@
 			<div class="col-md-4 col-md-offset-2 col-xs-12">
 				<div class="page-header">
 					<h1 id="h1">
-						地猫商城 <small>dmall</small>
+						地猫商城 <small>dmall 后台管理系统</small>
 					</h1>
 				</div>
 				<div>
 					<img alt="pic" src="resources/img/dmall.png" id="dmallImg">
-					<h3 class="pull-right">
-						<a class="btn btn-primary btn-large"
-							href="admin">管理员登录</a>
-						<a class="btn btn-primary btn-large"
-							href="https://www.tmall.com/" target="_blank">支持正版请移步  >></a>
-					</h3>
-					<br>
 				</div>
 			</div>
 			
 			<!-- 右侧登录入口 -->
 			<div class="col-md-3 col-xs-12" id="formDiv">	
 				<blockquote>
-					<p>欢迎使用地猫商城</p>
+					<p>欢迎您，管理员！</p>
 				</blockquote>
 				<form>
 					<div class="form-group">
@@ -59,7 +52,6 @@
 							<strong>登录</strong>
 						</button>
 					</div>
-					<span>> 还没有账号？</span><a href="register">立即注册</a>
 				</form>
 				
 				<!-- 登录失败弹出提示 -->

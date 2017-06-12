@@ -44,13 +44,13 @@ nav li {
 	}
 }
 
-#loginAlert, #registerAlert, #purchaseAlert {
+.wrongAlert {
 	margin-top: 60px;
 	display: none;
 }
 
 @media ( max-width : 768px) {
-	#loginAlert, #registerAlert, #purchaseAlert {
+	.wrongAlert {
 		margin-top: 20px;
 	}
 }

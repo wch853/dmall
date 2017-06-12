@@ -2,6 +2,8 @@ package com.dmall.web;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,12 +15,23 @@ import com.dmall.beans.project.Order;
 import com.dmall.beans.purchase.Provider;
 import com.dmall.beans.purchase.Purchase;
 import com.dmall.beans.repository.Product;
+import com.dmall.beans.user.Admin;
+import com.dmall.service.AdminService;
 import com.dmall.service.OrderService;
 import com.dmall.service.PurchaseService;
 
+/**
+ * 关于管理员的控制
+ * 
+ * @author wch
+ *
+ */
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
+	
+	@Autowired
+	private AdminService adminService;
 
 	@Autowired
 	private OrderService orderService;
@@ -26,11 +39,46 @@ public class AdminController {
 	@Autowired
 	private PurchaseService purchaseService;
 	
+	/**
+	 * 管理员登录页跳转
+	 * @return
+	 */
 	@RequestMapping
 	public String adminLogin() {
-		return "admin";
+		return "adminLogin";
+	}
+	
+	/**
+	 * 验证管理员登录
+	 * @param session
+	 * @param username
+	 * @param password
+	 * @return
+	 */
+	@RequestMapping("/login")
+	@ResponseBody
+	public Object checkAdminLogin(HttpSession session, String username, String password) {
+		Admin admin = adminService.checkAdmin(username, password);
+		
+		if (null == admin) {
+			return false;
+		} else {
+			session.setAttribute("admin", admin);
+			return true;
+		}
 	}
 
+	/**
+	 * 管理员下线
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping("/offline")
+	public String adminOffline(HttpSession session) {
+		session.invalidate();
+		return "redirect:/admin";
+	}
+	
 	/**
 	 * 显示未发货订单
 	 * @return
@@ -99,10 +147,7 @@ public class AdminController {
 	
 	@RequestMapping("/sendRece")
 	@ResponseBody
-	public void sendRece(Integer productId, String rece) {
-		// TODO
-		System.out.println(productId);
-		
-		System.out.println(rece);
+	public void sendRece(Integer purchaseId, String rece) {
+		purchaseService.receivePruchase(purchaseId, rece);
 	}
 }

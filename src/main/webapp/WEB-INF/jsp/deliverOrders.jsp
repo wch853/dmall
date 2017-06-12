@@ -46,8 +46,8 @@
 								</a>
 								<ul class="dropdown-menu">
 									<li><a href="admin/order"><span class="glyphicon glyphicon-th-list"></span>订单处理</a></li>
-									<li><a href="admin/purchase"><span class="glyphicon glyphicon-th-list"></span>采购管理</a></li>
-									<li><a href="admin/receive"><span class="glyphicon glyphicon-th-list"></span>入库管理</a></li>
+									<li><a href="admin/purchase"><span class="glyphicon glyphicon-pushpin"></span>采购管理</a></li>
+									<li><a href="admin/receive"><span class="glyphicon glyphicon-import"></span>入库管理</a></li>
 									<li class="divider"></li>
 									<li><a href="admin/offline"><span class="glyphicon glyphicon-off"></span>退出登录</a></li>
 								</ul>
@@ -87,6 +87,7 @@
 									<thead>
 										<tr>
 											<th>订单项编号</th>
+											<th>商品编号</th>
 											<th>商品名称</th>
 											<th>商品数量</th>
 											<th>库存数量</th>
@@ -97,6 +98,7 @@
 										<c:forEach items="${order.orderItems }" var="orderItem">
 											<tr>
 												<td>${orderItem.orderItemId }</td>
+												<td>${orderItem.product.productId }</td>
 												<td>${orderItem.product.productName }</td>
 												<td>${orderItem.productQuantity }</td>
 												<td>${orderItem.product.storage }</td>

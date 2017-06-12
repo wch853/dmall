@@ -28,7 +28,7 @@ $(function() {
 	
 	$('.confirmReceive').click(function() {
 		var $table = $(this).siblings('table');
-		var pId = $table.find('span:first').text();alert(pId)
+		var pId = $table.find('span:first').text();
 		// 该订单的所有行
 		var $row = $table.find('.valignTr');
 		var rece = {};
@@ -41,6 +41,7 @@ $(function() {
 			var num = $(this).find('input').val();
 
 			if (!verifyNum(num, purchase)) {
+				$('#verifyTip .lead').text('入库信息填写错误，请重新填写！');
 				$('#verifyTip').modal('show');
 				flag = false;
 				// 终止each循环
@@ -50,8 +51,6 @@ $(function() {
 			}
 		});
 		
-		console.log(rece);
-		
 		if (flag) {
 			$.ajax({
 				url : 'admin/sendRece',
@@ -60,7 +59,14 @@ $(function() {
 					rece : JSON.stringify(rece)
 				},
 				success : function() {
-					alert('success');
+					$('#verifyTip .lead').text('采购商品入库成功！');
+					$('#verifyTip').modal({
+						backdrop : 'static',
+						keyboard : false
+					});
+					$('.modal-footer button').click(function() {
+						location.reload();
+					});
 				},
 				error : function() {
 					alert('获取请求失败，请稍后重试！');

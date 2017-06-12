@@ -175,6 +175,12 @@ public class ClientController {
 		return tip;
 	}
 
+	/**
+	 * 查看历史订单
+	 * 
+	 * @param session
+	 * @return
+	 */
 	@RequestMapping("/order")
 	public ModelAndView showHistory(HttpSession session) {
 		ModelAndView mv = new ModelAndView();

@@ -43,4 +43,15 @@ public class PurchaseItemDaoTest {
 		
 		log.info(purchaseItems.toString());
 	}
+	
+	@Test
+	public void testUpdateReceiveNum() {
+		Purchase purchase = new Purchase(13);
+		Product product = new Product(1);
+		PurchaseItem purchaseItem = new PurchaseItem(purchase);
+		purchaseItem.setProduct(product);
+		purchaseItem.setReceiveNum(100);
+		
+		dao.updateReceiveNum(purchaseItem);
+	}
 }

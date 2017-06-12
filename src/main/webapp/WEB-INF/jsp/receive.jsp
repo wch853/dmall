@@ -43,12 +43,9 @@
 								class="caret"></strong>
 						</a>
 							<ul class="dropdown-menu">
-								<li><a href="admin/order"><span
-										class="glyphicon glyphicon-th-list"></span>订单处理</a></li>
-								<li><a href="admin/purchase"><span
-										class="glyphicon glyphicon-th-list"></span>采购管理</a></li>
-								<li><a href="admin/receive"><span
-										class="glyphicon glyphicon-th-list"></span>入库管理</a></li>
+									<li><a href="admin/order"><span class="glyphicon glyphicon-th-list"></span>订单处理</a></li>
+									<li><a href="admin/purchase"><span class="glyphicon glyphicon-pushpin"></span>采购管理</a></li>
+									<li><a href="admin/receive"><span class="glyphicon glyphicon-import"></span>入库管理</a></li>
 								<li class="divider"></li>
 								<li><a href="admin/offline"><span
 										class="glyphicon glyphicon-off"></span>退出登录</a></li>
@@ -122,7 +119,7 @@
 									<h4>提示</h4>
 								</div>
 								<div class="modal-body">
-									<span class="lead">入库信息填写错误，请重新填写！</span>
+									<span class="lead"></span>
 								</div>
 								<div class="modal-footer">
 									<button class="btn btn-primary" data-dismiss="modal">确定</button>

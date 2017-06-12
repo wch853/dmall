@@ -8,35 +8,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.dmall.beans.user.Client;
+import com.dmall.beans.user.Admin;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:spring/spring-dao.xml")
-public class ClientDaoTest {
+public class AdminDaoTest {
 	
 	private Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
-	private ClientDao dao;
+	private AdminDao dao;
 	
 	@Test
-	public void testCheckUser() {
+	public void testSelectAdmin() {
 		String username = "wch85";
 		String password = "123456";
 		
-		Client client = dao.selectClient(username, password);
+		Admin admin = dao.selectAdmin(username, password);
 		
-		boolean flag = (client == null);
-		
-		log.info(flag + "");
-	}
-	
-	@Test
-	public void testRegister() {
-		String username = "wch151561";
-		String password = "123456";
-		Client client = new Client(username, password);
-		dao.insertClient(client);
-		log.info((client.getClientId() == null) + "");
+		log.info((null == admin) + "");
 	}
 }

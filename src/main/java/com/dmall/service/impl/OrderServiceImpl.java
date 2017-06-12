@@ -142,7 +142,7 @@ public class OrderServiceImpl implements OrderService {
 		for (OrderItem item : orderItems) {
 			Integer productId = item.getProduct().getProductId();
 			int productQuantity = item.getProductQuantity();
-			productDao.updateStorage(productId, productQuantity);
+			productDao.updateDownStorage(productId, productQuantity);
 		}
 		
 		return true;

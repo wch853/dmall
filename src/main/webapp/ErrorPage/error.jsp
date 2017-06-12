@@ -19,7 +19,7 @@
 					<a href=""><img alt="pic" src="resources/img/dmall.png" id="dmallImg"></a>
 				</div>
 				<div class="col-md-4 col-xs-6">
-					<h4>${ex.message }</h4>
+					<h4>出错了啊~ ${ex.message }</h4>
 					<h4><span class="glyphicon glyphicon-hand-left"></span><a href="">打开地猫之门~</a></h4>
 				</div>
 			</div>

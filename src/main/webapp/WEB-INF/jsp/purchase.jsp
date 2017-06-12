@@ -47,8 +47,8 @@
 								</a>
 								<ul class="dropdown-menu">
 									<li><a href="admin/order"><span class="glyphicon glyphicon-th-list"></span>订单处理</a></li>
-									<li><a href="admin/purchase"><span class="glyphicon glyphicon-th-list"></span>采购管理</a></li>
-									<li><a href="admin/receive"><span class="glyphicon glyphicon-th-list"></span>入库管理</a></li>
+									<li><a href="admin/purchase"><span class="glyphicon glyphicon-pushpin"></span>采购管理</a></li>
+									<li><a href="admin/receive"><span class="glyphicon glyphicon-import"></span>入库管理</a></li>
 									<li class="divider"></li>
 									<li><a href="admin/offline"><span class="glyphicon glyphicon-off"></span>退出登录</a></li>
 								</ul>
@@ -120,7 +120,7 @@
 							</tbody>
 						</table>
 						<button id="confirmPurchase" class="btn btn-primary pull-right">确认采购</button>
-						<div id="purchaseAlert" class="alert alert-warning"></div>
+						<div class="alert alert-warning wrongAlert"></div>
  					</div>
  					
  					<div id="purchaseTip" class="modal fade">

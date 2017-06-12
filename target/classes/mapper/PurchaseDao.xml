@@ -27,4 +27,10 @@
 		FROM provider
 		WHERE provider_id = #{provider_id}
 	</select>
+	
+	<update id="updatePurchaseState">
+		UPDATE purchase
+		SET purchase_state = #{purchaseState}
+		WHERE purchase_id = #{purchaseId}
+	</update>
 </mapper>

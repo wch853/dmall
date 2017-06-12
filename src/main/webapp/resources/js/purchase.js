@@ -45,7 +45,7 @@ $(function() {
 		var provId = $('option:selected').prop('id');
 		
 		if (num == 0) {
-			$('#purchaseAlert').text('订单为空，生成采购订单失败！').fadeIn(500).delay(5000).fadeOut(1000);
+			$('.wrongAlert').text('订单为空，生成采购订单失败！').fadeIn(500).delay(5000).fadeOut(1000);
 		} else {
 			$.ajax({
 				url : 'admin/sendCata',

@@ -14,6 +14,7 @@ public class PurchaseItem {
 	private Purchase purchase;
 	private Product product;
 	private int purchaseNum;
+	private int receiveNum;
 
 	public PurchaseItem() {
 		super();
@@ -61,10 +62,18 @@ public class PurchaseItem {
 		this.purchaseNum = purchaseNum;
 	}
 
+	public int getReceiveNum() {
+		return receiveNum;
+	}
+
+	public void setReceiveNum(int receiveNum) {
+		this.receiveNum = receiveNum;
+	}
+
 	@Override
 	public String toString() {
 		return "PurchaseItem [purchaseItemId=" + purchaseItemId + ", purchase=" + purchase + ", product=" + product
-				+ ", purchaseNum=" + purchaseNum + "]";
+				+ ", purchaseNum=" + purchaseNum + ", receiveNum=" + receiveNum + "]";
 	}
 
 }

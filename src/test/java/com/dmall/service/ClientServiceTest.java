@@ -22,11 +22,11 @@ public class ClientServiceTest {
 	@Test
 	public void testCheckUser() {
 		String username = "wch853";
-		String password = "12345";
+		String password = "123456";
 		
 		Client client = service.checkUser(username, password);
 		
-		log.info((client == null) + "");
+		log.info(client.toString());
 	}
 	
 	@Test 
