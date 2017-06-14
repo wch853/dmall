@@ -96,10 +96,13 @@ ul {
 		margin-bottom: 15px;
 	}
 	#search {
-		right: -125px;
+		right: -180px;
 	}
 	#searchText {
 		min-width: 75px;
+	}
+	#productTable {
+		width: 100%;
 	}
 }
 

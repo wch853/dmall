@@ -11,6 +11,10 @@ $(function() {
 	
 	// 校验入库数字
 	function verifyNum(num, purchase) {
+		if (num.length == 0 ) {
+			return false;
+		}
+		
 		var number = Number(num);
 		var purchaseNum = Number(purchase);
 		
@@ -19,7 +23,7 @@ $(function() {
 			return false;
 		}
 		
-		if (number > purchaseNum || number < 0) {
+		if (number > purchaseNum || number < 0 || number.length == 0) {
 			return false;
 		}
 		
