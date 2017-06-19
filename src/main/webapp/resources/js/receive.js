@@ -9,7 +9,7 @@ $(function() {
 		});
 	});
 	
-	// 校验入库数字
+	// 校验入库数量
 	function verifyNum(num, purchase) {
 		if (num.length == 0 ) {
 			return false;
@@ -18,12 +18,12 @@ $(function() {
 		var number = Number(num);
 		var purchaseNum = Number(purchase);
 		
-		var reg = /^\d{1,}$/;
+		var reg = /^[0-9]{1,3}$/;
 		if (!reg.test(number)) {
 			return false;
 		}
 		
-		if (number > purchaseNum || number < 0 || number.length == 0) {
+		if (number > purchaseNum) {
 			return false;
 		}
 		
