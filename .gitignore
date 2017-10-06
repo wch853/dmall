@@ -1,2 +1,6 @@
 jdbc.properties
-*.class
+
+target/
+.settings
+.classpath
+.project
