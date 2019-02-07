@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>dmall</artifactId>
+        <groupId>com.wch</groupId>
+        <version>2.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>dmall-user</artifactId>
+    <packaging>jar</packaging>
+
+    <name>dmall-user</name>
+    <description>dmall project user module</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.wch</groupId>
+            <artifactId>dmall-service</artifactId>
+            <version>${version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <profiles.active>dev</profiles.active>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>prd</id>
+            <properties>
+                <profiles.active>prd</profiles.active>
+            </properties>
+        </profile>
+    </profiles>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+        <resources>
+            <resource>
+                <!-- 打包所有文件 -->
+                <directory>src/main/resources/</directory>
+                <!-- 排除环境专用文件 -->
+                <excludes>
+                    <exclude>config/dev/</exclude>
+                    <exclude>config/prd/</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <!-- 打包激活环境文件 -->
+                <directory>src/main/resources/config/${profiles.active}/</directory>
+                <!-- 打包到 resources/config 目录下-->
+                <targetPath>config</targetPath>
+            </resource>
+        </resources>
+    </build>
+
+</project>
