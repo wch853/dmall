@@ -3,9 +3,6 @@ package com.wch.dmall.dto;
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- * 用户信息传输对象
- */
 @Getter
 @Setter
 public class UserInfoDto {
@@ -19,4 +16,19 @@ public class UserInfoDto {
      * 用户名
      */
     private String username;
+
+    /**
+     * 用户角色
+     */
+    private String roles;
+
+    /**
+     * 用户权限
+     */
+    private String permissions;
+
+    /**
+     * token
+     */
+    private String token;
 }

@@ -1,10 +1,10 @@
 package com.wch.dmall.controller;
 
-import com.wch.dmall.enums.ResponseEnum;
 import com.wch.dmall.dto.LoginDto;
+import com.wch.dmall.enums.ResponseEnum;
 import com.wch.dmall.service.IUserService;
 import com.wch.dmall.vo.ResponseVo;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -25,7 +25,7 @@ public class UserController {
      * @param loginDto
      * @return
      */
-    @GetMapping(value = "/login")
+    @PostMapping(value = "/login")
     // TODO 入参校验
     // TODO 权限验证
     // TODO token

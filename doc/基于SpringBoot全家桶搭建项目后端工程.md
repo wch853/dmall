@@ -2,8 +2,7 @@
 使用 `IDEA` 引导创建名为 `dmall` 的 `SpringBoot` 项目，选中必要的 `web` 等模块，在此项目下以 'Module' 的形式创建多个工程，项目基础结构如下：
 
 |— dmall // 项目根目录<br/>
-|&emsp;|— dmall-interface // 公用接口类、工具模块<br/>
-|&emsp;|— dmall-service // 公用业务逻辑<br/>
+|&emsp;|— dmall-common // 公用接口类、工具模块、公用业务逻辑<br/>
 |&emsp;|— dmall-user // 用户服务模块<br/>
 |&emsp;|— dmall-product // 产品服务模块<br/>
 |&emsp;|— script // 脚本文件<br/>
@@ -29,8 +28,7 @@ spring.profiles.active=dev
 - 组织 `module`
 ```xml
     <modules>
-        <module>dmall-interface</module>
-        <module>dmall-service</module>
+        <module>dmall-common</module>
         <module>dmall-user</module>
         <module>dmall-product</module>
     </modules>

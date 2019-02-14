@@ -19,7 +19,7 @@
     <dependencies>
         <dependency>
             <groupId>com.wch</groupId>
-            <artifactId>dmall-service</artifactId>
+            <artifactId>dmall-common</artifactId>
             <version>${version}</version>
         </dependency>
     </dependencies>

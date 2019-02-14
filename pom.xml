@@ -13,7 +13,8 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <springboot.version>2.1.2.RELEASE</springboot.version>
+        <spring-boot.version>2.1.2.RELEASE</spring-boot.version>
+        <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
     </properties>
 
     <parent>
@@ -24,8 +25,7 @@
     </parent>
 
     <modules>
-        <module>dmall-interface</module>
-        <module>dmall-service</module>
+        <module>dmall-common</module>
         <module>dmall-user</module>
         <module>dmall-product</module>
     </modules>
@@ -35,26 +35,27 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter</artifactId>
-                <version>${springboot.version}</version>
+                <version>${spring-boot.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-aop</artifactId>
-                <version>${springboot.version}</version>
+                <version>${spring-boot.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-devtools</artifactId>
-                <version>${springboot.version}</version>
+                <version>${spring-boot.version}</version>
                 <scope>runtime</scope>
+                <optional>true</optional>
             </dependency>
 
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-test</artifactId>
-                <version>${springboot.version}</version>
+                <version>${spring-boot.version}</version>
                 <exclusions>
                     <exclusion>
                         <groupId>junit</groupId>
@@ -71,13 +72,13 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-web</artifactId>
-                <version>${springboot.version}</version>
+                <version>${spring-boot.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-data-redis</artifactId>
-                <version>${springboot.version}</version>
+                <version>${spring-boot.version}</version>
             </dependency>
 
             <dependency>

@@ -48,11 +48,6 @@ public class UserInfo {
     private long logisticsId;
 
     /**
-     * 用户角色：0-管理员，1-用户
-     */
-    private int role;
-
-    /**
      * 创建时间
      */
     private Date createTime;
